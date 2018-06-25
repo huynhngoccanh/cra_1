@@ -1,0 +1,63 @@
+= javascript_include_tag "https://js.stripe.com/v1/"
+
+fieldset
+  legend
+    h1.form-top Payment
+  div
+    | Czardom is a closed and carefully vetted community of the world’s top publicists, media and marketing czars.  
+    br
+    br
+    | It’s easy to apply to join Czardom.
+    br
+    br
+    | Just choose monthly ($10/month) or annual ($59 – you save $61/year) membership from the dropdown below, and enter your credit card information to apply. We will process your application within 24 hours – and if accepted, we will charge your card and welcome you to the community!"
+    br
+    br
+    | If you are ever unhappy with Czardom, you may cancel your subscription at any time, for any reason, no questions asked. 
+    br
+    br  
+    | Thank you for applying today!  Czar On!
+    
+    .form_padd
+      .payment-errors
+        - if @error_message_for_strip.present?
+          ul
+            - @error_message_for_strip.each_with_index do |err,eI|
+              li style=("color: #F02525;") = err
+      input#acc_token name="token" type="hidden" value="#{params[:token]}" /
+
+      .form-group
+        = select_tag :user_plan_id, options_from_collection_for_select(SignupStripePlan.all, :id, :name), class: 'form-control'
+
+      .form-group
+        .input-group
+          input#card_holder_name.form-control data-stripe="text" name="card_holder_name" placeholder=(" Creditcard holder") style=("background: #eee; border-right: 0px;") type="text" /
+          span.input-group-addon
+            span.glyphicon.glyphicon-user
+
+      .form-group
+        .input-group
+          input#card_no.form-control.credit-number data-stripe="number" name="card_no" placeholder=("Debit/Credit Card Number") style=("background: #eee; border-right: 0px;") type="text" /
+          span.input-group-addon
+            span.glyphicon.glyphicon-credit-card
+
+      .row
+        .col-xs-7.col-md-8
+          .form-group
+            .col-xs-6.col-md-6.pl-ziro style=("padding-left: 0px;")
+              input#expityMonth.form-control.card-expiry-month data-stripe="exp-month" name="month" placeholder="MM" required="" style=("background: #eee;") type="text" /
+            .col-xs-6.col-md-6.pl-ziro style=("padding-left: 0px;")
+              input#expityYear.form-control.card-expiry-year data-stripe="exp-year" name="year" placeholder="YYYY" required="" style=("background: #eee;") type="text" /
+
+        .col-xs-5.col-md-4.pull-right
+          .form-group
+            .input-group
+              input#cvc_number.form-control.credit-scurity data-stripe="cvc" maxlength="3" name="cvv" placeholder=("cvc number") style=("background: #eee; border-right: 0px;") type="password" /
+              span.input-group-addon
+                span.glyphicon.glyphicon-credit-card
+
+javascript:
+  Stripe.setPublishableKey("#{ ENV['STRIPE_PUBLISHABLE_KEY'] }");
+  $(document).ready(function(){
+    initPaymentForm();
+  })

@@ -1,0 +1,182 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="first-navbar">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <%= link_to main_app.root_path, class: 'navbar-brand' do %>
+        <%= embedded_svg('logo-side.svg', class: 'navbar-logo') %>
+      <% end %>
+      <% if user_signed_in? %>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#second-navbar" id='menu-toggle-button'>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="mobile-notification visible-xs">
+          <%= render 'shared/notification' %>
+        </div>
+      <% else %>
+        <div class="mobile-login">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <%= link_to "Log In", czardom_models_engine.login_path %>
+            </li>
+            <li>
+              <%= link_to "Sign Up", main_app.new_user_path %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+        <li>
+          <div class="navbar-form navbar-left" role="search" action="#">
+            <div class="form-group">
+              <input id="global-search" autocomplete="off" type="text" class="form-control typeahead" name="q" placeholder="Search members, events, clients, etc...">
+            </div>
+          </div>
+        </li>
+        <% if current_user.admin? %>
+        <li>
+          <%= link_to 'Admin Dashboard', czardom_admin.root_path %>
+        </li>
+        <% end %>
+
+        <li class="dropdown notification">
+          <%= render 'shared/notification' %>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown" role="button" aria-expanded="false">
+            <%= current_user.full_name %>
+            <%= avatar_tag current_user, size: :large %>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="<%= active_nav_class('users', 'show', current_user.slug) %>">
+              <%= link_to "My Profile", main_app.user_path(current_user) %>
+            </li>
+            <li class="<%= active_nav_class('users', 'my_invoice') %>">
+              <%= link_to "Invoices".html_safe, main_app.invoice_path  %>
+            </li>
+            <li class="<%= active_nav_class('users', 'edit') %>">
+              <%= link_to "Settings", main_app.edit_user_path %>
+            </li>
+            <%# if params['controller'] != "czardom_map/regions" %>
+              <!--      <li><%#= link_to "Invoices", invoice_path  %></li> -->
+            <%# end %>
+            <li class="divider"></li>
+            <li><%= link_to "Log Out", czardom_models_engine.destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
+        <% else %>
+        <li>
+          <%= link_to "Log In", czardom_models_engine.login_path %>
+        </li>
+        <li>
+          <%= link_to "Sign Up", main_app.new_user_path %>
+        </li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+
+  <!---------------------------------------------->
+  <% if user_signed_in? %>
+  <div class="navbar navbar-fixed-top second-navbar collapse navbar-collapse top-menu" id="second-navbar" >
+    <div class="container">
+      <ul class="nav navbar-nav navbar-left second-nav">
+        <% if user_signed_in? %>
+        <li class="nav-hidden-only">
+          <div class="navbar-form navbar-left" role="search" action="#">
+            <input id="global-search" autocomplete="off" type="text" class="form-control typeahead" name="q" placeholder="Search members, events, clients, etc...">
+         </div>
+        </li>
+        <% end %>
+        <li class="<%= active_nav_class('boards') %>">
+          <%= link_to "Boards", main_app.board_path %>
+        </li>
+
+        <li class="<%= active_nav_class('groups') %>">
+          <%= link_to "Groups", main_app.edit_user_groups_path %>
+        </li>
+
+        <li class="<%= active_nav_class('events') %>">
+          <%= link_to "Calendar", czardom_events.root_path %>
+        </li>
+
+        <li class="<%= active_nav_class('all-czars') %>">
+          <%= link_to "All Czars", main_app.czars_path %>
+        </li>
+
+        <li class="<%= active_nav_class('regions') %>">
+          <%= link_to "Czar Map", czardom_map.root_path %>
+        </li>
+
+        <li class="<%= active_nav_class('tip') %>">
+          <%= link_to "PITCH BITCH", main_app.tips_path %>
+        </li>
+
+
+        <li class="<%= active_nav_class('sponsors') %> dropdown">
+          <%#= link_to "Special Offers", main_app.special_offers_path %>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Special Offers <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to "Manage Event", main_app.sponsor_path("guest-list-app-zkipster") %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Book an AP Photographer",main_app.sponsor_path("associated-press") %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Hotel spaces for rent",main_app.sponsor_path("bizly") %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Celebrity services",main_app.sponsor_path("celebrity-service") %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Need a posh place to stay",main_app.sponsor_path("the-grafton-on-sunset") %></li>
+                <!--<li class="divider"></li>-->
+                <!--<li><%#= link_to "Save big on great glasses",main_app.sponsor_path("zenni") %></li>-->
+                <!--<li class="divider"></li>-->
+                <!--<li><%#= link_to "Legal services",main_app.sponsor_path("scott") %></li>-->
+                <!--<li class="divider"></li>-->
+                <!--<li><%#= link_to "Financial serivces",main_app.sponsor_path("spera") %></li>-->
+                <!--<li class="divider"></li>-->
+                <!--<li><%#= link_to "Find freelancers",main_app.sponsor_path("pinata") %></li>    -->
+              </ul>
+        </li>
+
+        <li class="<%= active_nav_class('jobs') %>">
+          <%= link_to "Jobs", main_app.jobs_path %>
+        </li>
+
+
+        <!-- <li><%#= link_to "Invoices", invoice_path  %></li>  -->
+
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+            <li class="nav-hidden-only"><%= link_to 'Admin Dashboard', czardom_admin.root_path %></li>
+          <% end %>
+          <li class="nav-hidden-only <%= active_nav_class('users', 'show', current_user.slug) %>"><%= link_to "Your Profile", main_app.user_path(current_user) %></li>
+          <li class="nav-hidden-only <%= active_nav_class('users', 'edit') %>"><%= link_to "Settings", main_app.edit_user_path %></li>
+          <li class="nav-hidden-only divider"></li>
+          <li class="nav-hidden-only"><%= link_to "All Notifications", main_app.notifications_path %></li>
+          <li class="nav-hidden-only"><%= link_to "Log Out", czardom_models_engine.destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li class="nav-hidden-only">
+            <%= link_to "Log In", czardom_models_engine.login_path %>
+          </li>
+          <li class="nav-hidden-only">
+            <%= link_to "Sign Up", main_app.new_user_path %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <% end %>
+</nav>
+<script>
+  $("div.second-navbar").autoHidingNavbar({
+    navbarOffset: 0
+  });
+</script>

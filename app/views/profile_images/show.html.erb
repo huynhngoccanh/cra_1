@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @profile_image.image %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @profile_image.user %>
+</p>
+
+<%= link_to 'Edit', edit_profile_image_path(@profile_image) %> |
+<%= link_to 'Back', profile_images_path %>

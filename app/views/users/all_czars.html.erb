@@ -1,0 +1,9 @@
+<%= render 'users/czar_filter' %>
+<div id="loader" class = "user-progress-bar">
+   <!--<img class="img-responsive" src="/loading_icon.gif" style="padding-right:10%"/> -->
+   <%= image_tag("loading-icon.gif", :class=> "image-responsive",:style => "padding-right:10%") %>
+</div>
+<div class='col-md-9'>	
+  <h1><%= 'No User found' if @users.blank?-%></h1>
+  <%= render partial: 'shared/follower_list', locals: {users: @users} %>
+</div>

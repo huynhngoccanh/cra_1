@@ -1,0 +1,35 @@
+<div class="table-responsive">
+
+  <table class="table datatable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Currency</th>
+        <th>Interval</th>
+        <th>Plan Id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @plans.each do |plan| %>
+        <tr>
+          <td>  
+            <%= plan.name %>
+          </td>
+          <td>
+            <%= plan.amount / 100  %>
+          </td>
+          <td>
+            <%= plan.currency %>
+          </td>
+          <td>
+            <%= plan.interval %>
+          </td>
+          <td>
+            <%= plan.plan_id %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

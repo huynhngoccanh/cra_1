@@ -1,0 +1,197 @@
+= semantic_form_for @user, html: { class: 'profile-page col-md-8 col-md-offset-2', id: "payment_form"} do |f|
+
+  - if @user.new_record?
+    h2 Create Your Profile
+    p.text-center
+      = link_to czardom_models_engine.user_facebook_omniauth_authorize_path , class: 'btn btn-primary' do
+        i.fa.fa-facebook
+        | Log In With Facebook
+  - else
+    h2 Update Your Profile
+
+  .fields
+    = f.semantic_errors *f.object.errors.keys
+
+  .profile-avatar
+    = avatar_tag @user, size: :small unless @user.new_record?
+
+  h2 Profile Details
+  .fields
+    .row
+      = f.input :image, label: 'Avatar (dimensions recommended: 400px x 400px)',wrapper_html: { class: 'col-md-12' }
+      = f.hidden_field :image_cache
+    hr/
+    .row
+      = f.input :cover_photo, label: 'Cover Photo (dimensions recommended: 1400px x 300px)',wrapper_html: { class: 'col-md-12' }
+      = f.hidden_field :cover_photo_cache
+    hr/
+    br/
+    .row
+      = f.input :first_name, wrapper_html: { class: 'col-md-6' }
+      = f.input :last_name, wrapper_html: { class: 'col-md-6' }
+    #user-slug
+      = f.input :slug, label: 'Username', hint: 'http://www.czardom.com/<strong data-bind="text: slug">username</strong>'.html_safe, input_html: { "data-bind" => "value: slug, valueUpdate: 'keyup'", autocomplete: false }
+    = f.input :email
+    - if @user.new_record? && session['devise.facebook_data'].blank?
+      = f.input :password
+      = f.input :password_confirmation
+      hr/
+    - elsif @user.persisted?
+      = link_to "Change Password", edit_password_user_path(edit_id(@user))
+      hr/
+    = f.input :phone_number
+    = f.input :about, input_html: { rows: 3, class: 'richedit' }
+    .row
+      = f.input :resume ,wrapper_html: { class: 'col-md-12' }
+    br/
+    br/
+    = f.input :website, prepend: 'http://', as: :string
+    = f.input :work
+    = f.input :education, label: 'Education'
+    = f.input :title
+  .fields
+    hr/
+    h2 General setting
+    = f.input :notification_by_email, label: 'Receive post notification'
+    = f.input :event_notification, label: 'Receive event notification'
+
+  .fields
+    hr/
+    h2 Social Networks
+    .row
+      - if @user.persisted?
+        strong.col-md-4 Facebook
+        .col-md-8.form-group
+          - if @user.access_token.present?
+            = link_to "Facebook Profile", @user.facebook_me['link']
+          - else
+            = link_to czardom_models_engine.user_facebook_omniauth_authorize_path , class: 'btn btn-primary facebook-login' do
+              i.fa.fa-facebook
+              | Connect to Facebook
+      = f.label :twitter_username, 'Twitter Username', class: 'col-md-4'
+      = f.input :twitter_username, label: false, prepend: '@', wrapper_html: { class: 'col-md-8' }
+      = f.label :social_link_instagram, 'Instagram Username', class: 'col-md-4'
+      = f.input :social_link_instagram, label: false, prepend: '@', wrapper_html: { class: 'col-md-8' }
+      = f.label :linked_in, 'LinkedIn Public URL', class: 'col-md-4'
+      = f.input :linked_in, label: false, prepend: 'https://', wrapper_html: { class: 'col-md-8' }
+      = f.label :google_plus_id, 'Google+ Account ID', class: 'col-md-4'
+      = f.input :google_plus_id, label: false, wrapper_html: { class: 'col-md-8' }
+      = f.label :pinterest_username, 'Pinterest Username', class: 'col-md-4'
+      = f.input :pinterest_username, label: false, wrapper_html: { class: 'col-md-8' }
+      = f.label :social_link_youtube, 'Youtube', class: 'col-md-4'
+      = f.input :social_link_youtube, label: false, wrapper_html: { class: 'col-md-8' }
+      = f.label :social_link_tumblr, 'Tumblr', class: 'col-md-4'
+      = f.input :social_link_tumblr, label: false, wrapper_html: { class: 'col-md-8' }
+      = f.label :social_link_snapchat, t('formtastic.labels.user.social_link_snapchat'), class: 'col-md-4'
+      = f.input :social_link_snapchat, label: false, wrapper_html: { class: 'col-md-8' }
+      = f.label :social_link_whatsapp, t('formtastic.labels.user.social_link_whatsapp'), class: 'col-md-4'
+      = f.input :social_link_whatsapp, label: false, wrapper_html: { class: 'col-md-8' }
+
+  .fields
+    hr/
+    h2 Core Skills and Expertise
+    .form-group
+      label= t('formtastic.labels.user.primary_segment')
+      input name="user[user_segment_ids][]" type="hidden" /
+      - UserSegment.all.each do |segment|
+        .checkbox
+          label
+            = check_box_tag "user[user_segment_ids][]", segment.id, @user.user_segment_ids.include?(segment.id)
+            = segment.name
+    .form-group
+      h3 style=("margin: 0 0 2px;padding: 0")  Additional Areas of Focus
+      input name="user[focus_area_ids][]" type="hidden" value="" /
+      p.text-muted Please choose the top ten to best describe your areas of focus
+      - FocusArea.all.each do |area|
+        .checkbox
+          label
+            = check_box_tag "user[focus_area_ids][]", area.id, @user.focus_area_ids.include?(area.id)
+            = area.name
+
+  .fields
+    hr/
+    h2 Location
+    = f.semantic_fields_for :address do |builder|
+      = render 'shared/address', f: builder
+    p
+      | We respect your privacy. This information is used to find events, groups,
+      | and other czars near you.
+      br/
+      | We only show your city, state, and country.
+
+  .container.payment_container.form-horizontal
+    = render 'payment_form'
+
+  .agreement
+    p Please read this End-User License Agreement ("Agreement") carefully before clicking the "I Agree" button, downloading or using our Czardom website and/or future Czardom apps ("Application").
+
+    p By clicking the "I Agree" button, downloading or using the Application, you are agreeing to be bound by the terms and conditions of this Agreement.
+
+    p If you do not agree to the terms of this Agreement, do not click on the "I Agree" button and do not download or use the Application.
+
+    h4 License
+
+    p Czardom grants you a revocable, non-exclusive, non-transferable, limited license to download, install and use the Application solely for your personal, non-commercial purposes strictly in accordance with the terms of this Agreement.
+
+    h4 Restrictions
+
+    p You agree not to, and you will not permit others to:
+
+    p a) license, sell, rent, lease, assign, distribute, transmit, host, outsource, disclose or otherwise commercially exploit the Application or make the Application available to any third party.
+
+    h4 Modifications to Application
+
+    p Czardom reserves the right to modify, suspend or discontinue, temporarily or permanently, the Application or any service to which it connects, with or without notice and without liability to you.
+
+    h4 Term and Termination
+
+    p This Agreement shall remain in effect until terminated by you or Czardom.
+
+    p Czardom may, in its sole discretion, at any time and for any or no reason, suspend or terminate this Agreement with or without prior notice.
+
+    p This Agreement will terminate immediately, without prior notice from Czardom, in the event that you fail to comply with any provision of this Agreement. You may also terminate this Agreement by deleting the Application and all copies thereof from your mobile device or from your desktop.
+
+    p Upon termination of this Agreement, you shall cease all use of the Application and delete all copies of the Application from your mobile device or from your desktop.
+
+    h4 Severability
+
+    p If any provision of this Agreement is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.
+
+    h4 Amendments to this Agreement
+
+    p Czardom reserves the right, at its sole discretion, to modify or replace this Agreement at any time. If a revision is material we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
+
+    h4 COPPA Compliance
+
+    p
+      | Czardom is a website for PR, Media and Marketing
+      u professionals
+      | only.
+      u This site is expressly and ONLY for professionals, ages 18+.
+
+    p Czardom requires extensive profile information on signups, and manually approves all new members to our community – precisely because we strive to stringently comply with COPPA laws.
+
+    p Any attempted fraudulent signups by underage users, or non-professional users, are expressly prohibited by this EULA (End User License Agreement). Czardom pledges to work with State Attorneys General, and Federal Law Enforcement, to prosecute any fraudulent acts committed by underage users to the fullest extent of the law.  
+
+    h4 Data Privacy
+    p Unlike many other websites, Czardom does NOT sell or share user data with third parties, nor do we use such data to target our members with ads. Czardom is a media community – not a surveillance site.
+
+    h4 Contact Information
+
+    p If you have any questions about this Agreement, please contact us.
+
+  = check_box_tag :agreement, true, false, required: true
+  label &nbsp;I agree to the terms and conditions
+
+  .form-actions
+    br/
+    br/
+    = f.action :submit, label: 'Save Profile', button_html: { class: 'btn btn-primary' }
+    = link_to 'Cancel', user_path(@user), class: 'btn btn-link' if @user.persisted?
+
+javascript:
+  (function() {
+    ko.applyBindings({
+      slug: ko.observable('#{@user.slug}')
+    });
+  })();

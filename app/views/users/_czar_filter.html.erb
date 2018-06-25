@@ -1,0 +1,61 @@
+<div class="all-czar-filter-container">
+  <div class="row">
+    <div id="filter-panel" class="czar-filter-panel all-czar-panel"  >
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <%= form_tag('/update_czar_list', method: :get, class: "form-inline", role: "form", remote: true, id: 'czar_form') do -%>
+            <h3><strong>Search for Czars</strong></h3>
+            <hr>
+            <div class="form-group">
+              <%= text_field_tag 'search', params[:search], placeholder: "Filter by Name", id: 'czar_search' %>
+            </div><!-- form group [search] -->
+            <div class="form-group">
+              <%= text_field_tag 'city', params[:city], placeholder: "Filter by City", id: 'czar_city' %>
+            </div>
+            <div class="form-group">
+              <%= text_field_tag 'client_name', params[:client_name], placeholder: "Filter by Client Name", id: 'czar_client_name' %>
+            </div>
+            <div class="form-group">
+              <%= text_field_tag 'agency_name', params[:agency_name], placeholder: "Filter by Agency Name", id: 'czar_agency_name' %>
+            </div>
+            <br>
+            <br>
+            <p><strong>Filter By Skills</strong></p>
+            <div class="form-group speciality">
+              <% @user_segments.each do |segment| %>
+                <div class="form-group">
+                  <%= check_box_tag "segments[]", segment.id, false, :class => 'czar_speciality'  -%><%= " #{segment.name}" %>
+                </div>
+              <% end %>
+            </div>
+            <%= submit_tag "Search", id:"submit-search-czar", class:"btn-success btn btn-md" %>
+          <% end %>
+        </div>
+      </div>
+    </div>       
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  $(function() {
+     $('#loader').hide();
+  });
+  $("#submit-search-czar").click(function(){
+    $('#loader').show();
+  }) 
+  // $("#czar_search,#czar_city,#czar_client_name,#czar_agency_name").keypress(function(){
+  //   $('#loader').show();
+  //   $('#czar_form').submit();
+  // })
+  // $(".czar_speciality").click(function(){
+  //   if($(".czar_speciality").is(':checked') == true){
+  //     $('#loader').show();
+  //     $('#czar_form').submit();
+  //   }
+  //   if($(".czar_speciality").is(':checked') == false){
+  //     $('#loader').show();
+  //     $('#czar_form').submit();
+  //   }
+  // })
+</script>

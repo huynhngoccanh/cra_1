@@ -1,0 +1,1885 @@
+
+
+1) To Signup A user Url:- http://localhost:3000/api/v1/registrations 
+Method=> post 
+Header=> Accept: application/json 
+Data=> Please have a look the czardom.com/public/doc/signup.png
+
+Output:- 
+{
+ :id=>2,
+ :email=>"baylorrae+old@gmail.com",
+ :provider=>"facebook",
+ :uid=>"10203885399922717",
+ :first_name=>"Baylor",
+ :last_name=>"Rae'",
+ :image=>
+  {:small=>
+    "https://czardom.s3.amazonaws.com/uploads/user/image/2/small_avatar.png?X-Amz-Expires=600&X-Amz-Date=20170218T114448Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170218/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=88c742979c701875590a37d7a9939a96b462e95e08a545c55625809002128f2b",
+   :thumb=>
+    "https://czardom.s3.amazonaws.com/uploads/user/image/2/thumb_avatar.png?X-Amz-Expires=600&X-Amz-Date=20170218T114448Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170218/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=30b8fb593c02a5bcce9cfbc335d5bc28f410e77d9fd67d89961b9cd2ee1bc1b7",
+   :large=>
+    "https://czardom.s3.amazonaws.com/uploads/user/image/2/large_avatar.png?X-Amz-Expires=600&X-Amz-Date=20170218T114448Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170218/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=aae9f98ef0636f8ce3796cc983e0beb03e042c7357f6745afb9d783d16501bb6"},
+ :gender=>nil,
+ :facebook_url=>"",
+ :education=>"-",
+ :work=>"FNC Inc",
+ :website=>"baylorrae.com",
+ :about=>
+  "<p>Working with <a href=\"http://www.czardom.com/jennifer\" rel=\"mention\">Jennifer</a> and <a href=\"http://www.czardom.com/john-demarchi\" rel=\"mention\">John</a> making czardom the best place for publicists.<br></p>",
+ :cover_photo=>
+  "https://czardom.s3.amazonaws.com/uploads/user/cover_photo/2/square__MG_7448.JPG?X-Amz-Expires=600&X-Amz-Date=20170218T114448Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170218/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=85cb394d28886f832f9d97af9f9671d0405b247efa0dc2b8748b24721a676ad3",
+ :admin=>true,
+ :forem_admin=>true,
+ :forem_state=>"pending_review",
+ :forem_auto_subscribe=>false,
+ :twitter_username=>"BaylorRae",
+ :linked_in=>"www.linkedin.com/in/baylorrae",
+ :google_plus_id=>"108533970934924077652",
+ :primary_segment_id=>33,
+ :secondary_segment_id=>10,
+ :phone_number=>"",
+ :pinterest_username=>"baylorrae",
+ :resume=>
+  "https://czardom.s3.amazonaws.com/uploads/user/resume/2/resume.pdf?X-Amz-Expires=600&X-Amz-Date=20170218T114448Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170218/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=5770ad6209479792b14e6fbde6143791fdf758e197191860f769b291f9db0e2b",
+ :auto_follow=>false,
+ :social_link_vine=>"",
+ :social_link_youtube=>"",
+ :social_link_tumblr=>"",
+ :social_link_custom_facebook_url=>nil,
+ :social_link_instagram=>"",
+ :social_link_whatsapp=>"",
+ :social_link_snapchat=>"",
+ :roles_mask=>129023,
+ :notification_by_email=>false,
+ :company_name=>nil,
+ :title=>nil,
+ :event_notification=>true,
+ :focus_areas=>"[]",
+ :user_segments=>"[]",
+ :address_attributes=>"\"MS\"",
+ :created_at=>Mon, 08 Sep 2014,
+ :updated_at=>Wed, 12 Oct 2016
+}
+
+2) Signin Api 
+Url:- http://localhost:3000/api/v1/sessions 
+Method=> post 
+Form=> key : Accept , value : application/json 
+Header=> Accept: application/json 
+Data=> 
+{ "user": { "email": "test@gail.com", "password": "12345678" } }
+
+Output:- 
+{
+  "info": "Login succeed!",
+  "data": {
+    "user": {
+      "id": 17340,
+      "email": "test@gail.com",
+      "provider": "",
+      "uid": "",
+      "first_name": "peter",
+      "last_name": "lopez",
+      "image": {
+        "small": "https://czardom.s3.amazonaws.com/uploads/user/image/17340/small_php.png?X-Amz-Expires=600&X-Amz-Date=20170218T114921Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170218/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=7911ba3ecaf3138e20d638269215484b4ff9bf088500610e502cff5b65b99209",
+        "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/17340/thumb_php.png?X-Amz-Expires=600&X-Amz-Date=20170218T114921Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170218/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=64fa15f0b1ad2f5167f7f8b2dd3bcb9d3ffc940174533ccff63545e9abf46d0c",
+        "large": "https://czardom.s3.amazonaws.com/uploads/user/image/17340/large_php.png?X-Amz-Expires=600&X-Amz-Date=20170218T114921Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170218/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=76fe60b5f2e74ee800031425a5713e6c33c02b522fce858407d9a46fc0569923"
+      },
+      "gender": "male",
+      "facebook_url": "www.fb.com/jailalawat",
+      "education": "dev",
+      "work": "model",
+      "website": "www.ff.com",
+      "about": "zzzzzzzzzz csds vf ssz gbgbg",
+      "cover_photo": "https://czardom.s3.amazonaws.com/uploads/user/cover_photo/17340/square_free-php-mysql-training-course-online-tutorial.jpg?X-Amz-Expires=600&X-Amz-Date=20170218T114921Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170218/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=94c56ecc34394058c7e6fd6bd340d323c28d1c634bd3f3b2d4a5dda5c19c871e",
+      "admin": false,
+      "forem_admin": true,
+      "forem_state": "usa",
+      "forem_auto_subscribe": true,
+      "twitter_username": "jai_lalawat",
+      "linked_in": "www.linkedin.com/jailalawat",
+      "google_plus_id": "www.google.com/jailalawat",
+      "primary_segment_id": 1,
+      "secondary_segment_id": 2,
+      "phone_number": "9874563210",
+      "pinterest_username": "jailalawat",
+      "resume": "https://czardom.s3.amazonaws.com/uploads/user/resume/17340/jailalawat.doc?X-Amz-Expires=600&X-Amz-Date=20170218T114921Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170218/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=7e4ae24dff3636c5f41f1861bd64c022e388d11e7492b07af89837dea3fe3d21",
+      "auto_follow": true,
+      "social_link_vine": "www.google.com/jailalawat",
+      "social_link_youtube": "www.google.com/jailalawat",
+      "social_link_tumblr": "www.google.com/jailalawat",
+      "social_link_custom_facebook_url": "www.fb.com/jailalawat",
+      "social_link_instagram": "www.google.com/jailalawat",
+      "social_link_whatsapp": "www.google.com/jailalawat",
+      "social_link_snapchat": "www.google.com/jailalawat",
+      "roles_mask": 129023,
+      "notification_by_email": true,
+      "company_name": "jsm",
+      "title": "ror",
+      "event_notification": true,
+      "focus_areas": "[]",
+      "user_segments": "[]",
+      "address_attributes": "\"Alberta\"",
+      "created_at": "2017-02-18",
+      "updated_at": "2017-02-18"
+    },
+    "authentication_token": "r1d5H5oyQE9ZLzNHkDfC"
+  },
+  "success": true
+}
+
+3) Logout Api 
+Url:- http://localhost:3000/api/v1/sessions 
+Method=> delete 
+Form=> key : Accept , value : application/json 
+Header=> Accept: application/json 
+Data=> 
+{ "user": { "email": "test@gail.com", "authentication_token": "YxCqaZxvFpStzyqUkoLz" } }
+
+Output:- 
+{
+  "success": true,
+  "info": "User Successfully Logged Out",
+  "data": {}
+}
+
+4) Forget Password api 
+Url:- http://localhost:3000/api/v1/reset_passwords 
+Method=> post Form=> key : Accept , value : application/json 
+Header=> Accept: application/json, 
+Content-Type: application/json 
+Data=> 
+{ "user":{ "email": "tesxxt@gail.com" } } 
+Output:- 
+{ "success": true, "info": "Please check your email address, a password reset link has been sent to your email address" }
+
+5) Profile => Personal Details
+Url :- http://localhost:3000/api/v1/profiles/personal_details?authentication_token=nevAf4d6bFNiAUzsdDVo
+Method : get 
+Header=> Accept: application/json, 
+Content-Type: application/json 
+Data => 
+{
+  "success": true,
+  "info": "Profile",
+  "data": {
+    "personal_details": {
+      "id": 17355,
+      "email": "ashishghate5@gmail.com",
+      "provider": null,
+      "uid": null,
+      "first_name": "ashish",
+      "last_name": "ghate",
+      "image": {
+        "small": "default-avatar.jpg",
+        "thumb": "default-avatar.jpg",
+        "large": "default-avatar.jpg"
+      },
+      "gender": null,
+      "facebook_url": null,
+      "education": "MCA",
+      "work": "jsmwic pvt ltd",
+      "website": "",
+      "about": "i am software developer",
+      "cover_photo": "/fallback/square_default-cover.jpg",
+      "admin": false,
+      "forem_admin": false,
+      "forem_state": "approved",
+      "forem_auto_subscribe": false,
+      "twitter_username": "aghate143",
+      "linked_in": "",
+      "google_plus_id": "ashishghate5@gmail.com",
+      "primary_segment_id": null,
+      "secondary_segment_id": null,
+      "phone_number": "8103316142",
+      "pinterest_username": "",
+      "resume": null,
+      "auto_follow": false,
+      "social_link_vine": null,
+      "social_link_youtube": "",
+      "social_link_tumblr": "",
+      "social_link_custom_facebook_url": null,
+      "social_link_instagram": "",
+      "social_link_whatsapp": "",
+      "social_link_snapchat": "",
+      "roles_mask": null,
+      "notification_by_email": true,
+      "company_name": null,
+      "title": "ROR",
+      "event_notification": true,
+      "focus_areas": "[{\"id\":33,\"name\":\"Architecture/Home Decor\",\"created_at\":\"2015-06-12T19:16:05.678Z\",\"updated_at\":\"2015-06-12T19:16:05.678Z\",\"position\":0},{\"id\":34,\"name\":\"Arts\",\"created_at\":\"2015-06-12T19:16:05.684Z\",\"updated_at\":\"2015-06-12T19:16:05.684Z\",\"position\":1},{\"id\":38,\"name\":\"Beauty\",\"created_at\":\"2015-06-12T19:16:05.693Z\",\"updated_at\":\"2015-06-12T19:16:05.693Z\",\"position\":5},{\"id\":40,\"name\":\"Business\",\"created_at\":\"2015-06-12T19:16:05.697Z\",\"updated_at\":\"2015-06-12T19:16:05.697Z\",\"position\":7},{\"id\":45,\"name\":\"Fashion\",\"created_at\":\"2015-06-12T19:16:05.708Z\",\"updated_at\":\"2015-06-12T19:16:05.708Z\",\"position\":12},{\"id\":49,\"name\":\"Fashion/Women\",\"created_at\":\"2015-06-12T19:16:05.716Z\",\"updated_at\":\"2015-06-12T19:16:05.716Z\",\"position\":16},{\"id\":50,\"name\":\"Film\",\"created_at\":\"2015-06-12T19:16:05.719Z\",\"updated_at\":\"2015-06-12T19:16:05.719Z\",\"position\":17},{\"id\":51,\"name\":\"Finance\",\"created_at\":\"2015-06-12T19:16:05.720Z\",\"updated_at\":\"2015-06-12T19:16:05.720Z\",\"position\":18},{\"id\":52,\"name\":\"Fitness\",\"created_at\":\"2015-06-12T19:16:05.723Z\",\"updated_at\":\"2015-06-12T19:16:05.723Z\",\"position\":19},{\"id\":53,\"name\":\"Gaming\",\"created_at\":\"2015-06-12T19:16:05.725Z\",\"updated_at\":\"2015-06-12T19:16:05.725Z\",\"position\":20},{\"id\":55,\"name\":\"Government\",\"created_at\":\"2015-06-12T19:16:05.730Z\",\"updated_at\":\"2015-06-12T19:16:05.730Z\",\"position\":22},{\"id\":57,\"name\":\"Health \\u0026 Wellness\",\"created_at\":\"2015-06-12T19:16:05.734Z\",\"updated_at\":\"2015-06-12T19:16:05.734Z\",\"position\":24},{\"id\":65,\"name\":\"Media\",\"created_at\":\"2015-06-12T19:16:05.750Z\",\"updated_at\":\"2015-06-12T19:16:05.750Z\",\"position\":32},{\"id\":66,\"name\":\"Music\",\"created_at\":\"2015-06-12T19:16:05.752Z\",\"updated_at\":\"2015-06-12T19:16:05.752Z\",\"position\":33},{\"id\":72,\"name\":\"Politics\",\"created_at\":\"2015-06-12T19:16:05.810Z\",\"updated_at\":\"2015-06-12T19:16:05.810Z\",\"position\":39},{\"id\":74,\"name\":\"Real Estate\",\"created_at\":\"2015-06-12T19:16:05.815Z\",\"updated_at\":\"2015-06-12T19:16:05.815Z\",\"position\":41},{\"id\":84,\"name\":\"Wedding \",\"created_at\":\"2015-06-12T19:16:05.836Z\",\"updated_at\":\"2015-06-12T19:16:05.836Z\",\"position\":51},{\"id\":85,\"name\":\"Women\",\"created_at\":\"2015-06-12T19:16:05.838Z\",\"updated_at\":\"2015-06-12T19:16:05.838Z\",\"position\":52}]",
+      "user_segments": "[{\"id\":33,\"position\":0,\"name\":\"Blogger\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":34,\"position\":1,\"name\":\"Brand Rep\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":35,\"position\":2,\"name\":\"Casting\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":37,\"position\":4,\"name\":\"Event Management\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":38,\"position\":5,\"name\":\"Event Production\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":39,\"position\":6,\"name\":\"Graphic Design\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":41,\"position\":8,\"name\":\"Influencer\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":43,\"position\":10,\"name\":\"Marketing\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":46,\"position\":13,\"name\":\"Photography\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":48,\"position\":15,\"name\":\"Social Media\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":53,\"position\":20,\"name\":\"Web Design Writing\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"}]",
+      "address_attributes": "\"MP\"",
+      "created_at": "2017-02-21",
+      "updated_at": "2017-02-21",
+      "followers": 0
+    }
+  }
+}
+
+6) Profile => Expertise
+Url :- http://localhost:3000/api/v1/profiles/expertise?authentication_token=nevAf4d6bFNiAUzsdDVo
+Method :- get
+Header=> Accept: application/json, 
+Content-Type: application/json 
+Data => 
+{
+  "success": true,
+  "info": "Profile",
+  "data": {
+    "core_skills_and_expertise": [
+      "Blogger",
+      "Brand Rep",
+      "Casting",
+      "Event Management",
+      "Event Production",
+      "Graphic Design",
+      "Influencer",
+      "Marketing",
+      "Photography",
+      "Social Media",
+      "Web Design Writing"
+    ],
+    "additional_areas_of_focus": [
+      "Architecture/Home Decor",
+      "Arts",
+      "Beauty",
+      "Business",
+      "Fashion",
+      "Fashion/Women",
+      "Film",
+      "Finance",
+      "Fitness",
+      "Gaming",
+      "Government",
+      "Health & Wellness",
+      "Media",
+      "Music",
+      "Politics",
+      "Real Estate",
+      "Wedding ",
+      "Women"
+    ]
+  }
+}
+
+7) Profile => Additional Info
+Url :- http://localhost:3000/api/v1/profiles/additional_info?authentication_token=nevAf4d6bFNiAUzsdDVo
+Method :- get
+Header=> Accept: application/json, 
+Content-Type: application/json 
+Data => 
+{
+  "success": true,
+  "info": "Profile",
+  "data": {
+    "additional_info": {
+      "id": 17355,
+      "email": "ashishghate5@gmail.com",
+      "provider": null,
+      "uid": null,
+      "first_name": "ashish",
+      "last_name": "ghate",
+      "image": {
+        "small": "default-avatar.jpg",
+        "thumb": "default-avatar.jpg",
+        "large": "default-avatar.jpg"
+      },
+      "gender": null,
+      "facebook_url": null,
+      "education": "MCA",
+      "work": "jsmwic pvt ltd",
+      "website": "",
+      "about": "i am software developer",
+      "cover_photo": "/fallback/square_default-cover.jpg",
+      "admin": false,
+      "forem_admin": false,
+      "forem_state": "approved",
+      "forem_auto_subscribe": false,
+      "twitter_username": "aghate143",
+      "linked_in": "",
+      "google_plus_id": "ashishghate5@gmail.com",
+      "primary_segment_id": null,
+      "secondary_segment_id": null,
+      "phone_number": "8103316142",
+      "pinterest_username": "",
+      "resume": null,
+      "auto_follow": false,
+      "social_link_vine": null,
+      "social_link_youtube": "",
+      "social_link_tumblr": "",
+      "social_link_custom_facebook_url": null,
+      "social_link_instagram": "",
+      "social_link_whatsapp": "",
+      "social_link_snapchat": "",
+      "roles_mask": null,
+      "notification_by_email": true,
+      "company_name": null,
+      "title": "ROR",
+      "event_notification": true,
+      "focus_areas": "[{\"id\":33,\"name\":\"Architecture/Home Decor\",\"created_at\":\"2015-06-12T19:16:05.678Z\",\"updated_at\":\"2015-06-12T19:16:05.678Z\",\"position\":0},{\"id\":34,\"name\":\"Arts\",\"created_at\":\"2015-06-12T19:16:05.684Z\",\"updated_at\":\"2015-06-12T19:16:05.684Z\",\"position\":1},{\"id\":38,\"name\":\"Beauty\",\"created_at\":\"2015-06-12T19:16:05.693Z\",\"updated_at\":\"2015-06-12T19:16:05.693Z\",\"position\":5},{\"id\":40,\"name\":\"Business\",\"created_at\":\"2015-06-12T19:16:05.697Z\",\"updated_at\":\"2015-06-12T19:16:05.697Z\",\"position\":7},{\"id\":45,\"name\":\"Fashion\",\"created_at\":\"2015-06-12T19:16:05.708Z\",\"updated_at\":\"2015-06-12T19:16:05.708Z\",\"position\":12},{\"id\":49,\"name\":\"Fashion/Women\",\"created_at\":\"2015-06-12T19:16:05.716Z\",\"updated_at\":\"2015-06-12T19:16:05.716Z\",\"position\":16},{\"id\":50,\"name\":\"Film\",\"created_at\":\"2015-06-12T19:16:05.719Z\",\"updated_at\":\"2015-06-12T19:16:05.719Z\",\"position\":17},{\"id\":51,\"name\":\"Finance\",\"created_at\":\"2015-06-12T19:16:05.720Z\",\"updated_at\":\"2015-06-12T19:16:05.720Z\",\"position\":18},{\"id\":52,\"name\":\"Fitness\",\"created_at\":\"2015-06-12T19:16:05.723Z\",\"updated_at\":\"2015-06-12T19:16:05.723Z\",\"position\":19},{\"id\":53,\"name\":\"Gaming\",\"created_at\":\"2015-06-12T19:16:05.725Z\",\"updated_at\":\"2015-06-12T19:16:05.725Z\",\"position\":20},{\"id\":55,\"name\":\"Government\",\"created_at\":\"2015-06-12T19:16:05.730Z\",\"updated_at\":\"2015-06-12T19:16:05.730Z\",\"position\":22},{\"id\":57,\"name\":\"Health \\u0026 Wellness\",\"created_at\":\"2015-06-12T19:16:05.734Z\",\"updated_at\":\"2015-06-12T19:16:05.734Z\",\"position\":24},{\"id\":65,\"name\":\"Media\",\"created_at\":\"2015-06-12T19:16:05.750Z\",\"updated_at\":\"2015-06-12T19:16:05.750Z\",\"position\":32},{\"id\":66,\"name\":\"Music\",\"created_at\":\"2015-06-12T19:16:05.752Z\",\"updated_at\":\"2015-06-12T19:16:05.752Z\",\"position\":33},{\"id\":72,\"name\":\"Politics\",\"created_at\":\"2015-06-12T19:16:05.810Z\",\"updated_at\":\"2015-06-12T19:16:05.810Z\",\"position\":39},{\"id\":74,\"name\":\"Real Estate\",\"created_at\":\"2015-06-12T19:16:05.815Z\",\"updated_at\":\"2015-06-12T19:16:05.815Z\",\"position\":41},{\"id\":84,\"name\":\"Wedding \",\"created_at\":\"2015-06-12T19:16:05.836Z\",\"updated_at\":\"2015-06-12T19:16:05.836Z\",\"position\":51},{\"id\":85,\"name\":\"Women\",\"created_at\":\"2015-06-12T19:16:05.838Z\",\"updated_at\":\"2015-06-12T19:16:05.838Z\",\"position\":52}]",
+      "user_segments": "[{\"id\":33,\"position\":0,\"name\":\"Blogger\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":34,\"position\":1,\"name\":\"Brand Rep\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":35,\"position\":2,\"name\":\"Casting\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":37,\"position\":4,\"name\":\"Event Management\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":38,\"position\":5,\"name\":\"Event Production\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":39,\"position\":6,\"name\":\"Graphic Design\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":41,\"position\":8,\"name\":\"Influencer\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":43,\"position\":10,\"name\":\"Marketing\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":46,\"position\":13,\"name\":\"Photography\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":48,\"position\":15,\"name\":\"Social Media\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":53,\"position\":20,\"name\":\"Web Design Writing\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"}]",
+      "address_attributes": "\"MP\"",
+      "created_at": "2017-02-21",
+      "updated_at": "2017-02-21"
+    }
+  }
+}
+
+8) All Upcoming Events
+Url :- http://localhost:3000/api/v1/events?authentication_token=nevAf4d6bFNiAUzsdDVo
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json 
+Data =>
+{
+  "success": true,
+  "info": "Events",
+  "data": {
+    "upcoming_events": []
+  }
+}
+
+9) Events by Date/Filtered Events
+Url :- http://localhost:3000/api/v1/filetered_events?authentication_token=nevAf4d6bFNiAUzsdDVo
+Method :- post
+Header :- Accept: application/json, 
+Content-Type: application/json
+Data => { "event": { "date": "2016-11-01"} }
+Output :- 
+{
+  "success": true,
+  "info": "Events",
+  "data": {
+    "events": [
+      {
+        "id": 225,
+        "eventable_id": 13,
+        "eventable_type": "Group",
+        "user_id": 3,
+        "title": "Macy's Parade",
+        "description": "<p>90th annual Macy's Thanksgiving Day Parade</p>",
+        "start_at": "2016-11-24T19:25:00.000Z",
+        "end_at": "2016-11-24T19:25:00.000Z",
+        "location": null,
+        "created_at": "2016-11-24T19:26:30.849Z",
+        "updated_at": "2016-11-24T19:26:32.100Z",
+        "slug": "macy-s-parade",
+        "topic_id": 86404,
+        "priority": 50
+      },
+      {
+        "id": 226,
+        "eventable_id": 93,
+        "eventable_type": "Group",
+        "user_id": 10075,
+        "title": "Test Event From David.",
+        "description": "<p>this is my test event for accesorry group</p>",
+        "start_at": "2016-11-28T15:01:00.000Z",
+        "end_at": "2016-11-28T16:00:00.000Z",
+        "location": null,
+        "created_at": "2016-11-27T15:12:16.884Z",
+        "updated_at": "2016-11-27T15:12:17.197Z",
+        "slug": "test-event-from-david",
+        "topic_id": 86494,
+        "priority": 50
+      }
+    ]
+  }
+}
+
+10) Inbox
+Url :- http://localhost:3000/api/v1/inbox?authentication_token=RCCi4QcV3emoEQmAPgpi
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+  "success": true,
+  "info": "conversation",
+  "data": {
+    "messages": [
+      {
+        "id": 2680,
+        "body": "33postman mullti user test boody",
+        "subject": "33postman mullti user test subject",
+        "sender_id": 17414,
+        "sender_type": "User",
+        "conversation_id": 2678,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-23T07:06:00.470Z",
+        "created_at": "2017-02-23T07:06:00.470Z",
+        "global": false,
+        "expires": null
+      },
+      {
+        "id": 2679,
+        "body": "22postman mullti user test boody",
+        "subject": "22postman mullti user test subject",
+        "sender_id": 17414,
+        "sender_type": "User",
+        "conversation_id": 2677,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-23T06:54:36.159Z",
+        "created_at": "2017-02-23T06:54:36.159Z",
+        "global": false,
+        "expires": null
+      },
+      {
+        "id": 2678,
+        "body": "11postman mullti user test boody",
+        "subject": "11postman mullti user test subject",
+        "sender_id": 17414,
+        "sender_type": "User",
+        "conversation_id": 2676,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-23T06:52:27.988Z",
+        "created_at": "2017-02-23T06:52:27.988Z",
+        "global": false,
+        "expires": null
+      },
+      {
+        "id": 2677,
+        "body": "postman mullti user test boody",
+        "subject": "postman mullti user test subject",
+        "sender_id": 17414,
+        "sender_type": "User",
+        "conversation_id": 2675,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-23T06:49:05.862Z",
+        "created_at": "2017-02-23T06:49:05.862Z",
+        "global": false,
+        "expires": null
+      },
+      {
+        "id": 2675,
+        "body": "multi user 1",
+        "subject": "testing 1",
+        "sender_id": 17414,
+        "sender_type": "User",
+        "conversation_id": 2673,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-23T05:35:00.942Z",
+        "created_at": "2017-02-23T05:35:00.942Z",
+        "global": false,
+        "expires": null
+      },
+      {
+        "id": 2673,
+        "body": "testing",
+        "subject": "sssssssssssssss",
+        "sender_id": 17414,
+        "sender_type": "User",
+        "conversation_id": 2671,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-23T05:05:50.783Z",
+        "created_at": "2017-02-23T05:05:50.783Z",
+        "global": false,
+        "expires": null
+      }
+    ]
+  }
+}
+
+11) Get Last Conversation
+Url :- http://localhost:3000/api/v1/get_last_conversation?authentication_token=RCCi4QcV3emoEQmAPgpi
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+output :-
+{
+  "success": true,
+  "info": "conversation",
+  "data": {
+    "conversation": [
+      {
+        "id": 2680,
+        "body": "33postman mullti user test boody",
+        "subject": "33postman mullti user test subject",
+        "sender_id": 17414,
+        "sender_type": "User",
+        "conversation_id": 2678,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-23T07:06:00.470Z",
+        "created_at": "2017-02-23T07:06:00.470Z",
+        "global": false,
+        "expires": null
+      }
+    ]
+  }
+}
+
+12) Send Message
+Url :- http://localhost:3000/api/v1/conversations?authentication_token=RCCi4QcV3emoEQmAPgpi
+Method : Post
+Header :- Accept: application/json, 
+Content-Type: application/json
+Data :- {
+    "conversation":
+  {
+      "body": "33postman mullti user test boody",
+      "subject":"33postman mullti user test subject",
+      "recipients":{"0":"ashishghate5@gmail.com","1":"user1@test.com"}
+  }
+}
+Output :-
+{
+  "success": true,
+  "info": "Messages sent successfully..."
+}
+
+13) Conversation Reply API
+Url :- http://localhost:3000/api/v1/reply?authentication_token=RCCi4QcV3emoEQmAPgpi
+Method :- Post
+Header :- Accept: application/json, 
+Content-Type: application/json
+Data :- {
+    "conversation":
+  {
+      "body": "2nd Reply from user",
+      "conversation_id": "2681" 
+  }
+}
+Output :-
+{
+  "success": true,
+  "info": "Reply sent successfully..."
+}
+
+14) Trash
+Url :- http://localhost:3000/api/v1/trash/:conversation_id?authentication_token=RCCi4QcV3emoEQmAPgpi
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+  "success": true,
+  "info": "Conversation moved into trash..."
+}
+
+15) Untrash
+Url :- http://localhost:3000/api/v1/untrash/:conversation_id?authentication_token=RCCi4QcV3emoEQmAPgpi
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+  "success": true,
+  "info": "Conversation moved into inbox..."
+}
+
+16) Sent
+Url :- http://localhost:3000/api/v1/sent?authentication_token=vBZswsXEhdoLGPSGS8Zr
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+  "success": true,
+  "info": "sent",
+  "data": {
+    "conversations": [
+      {
+        "id": 2683,
+        "body": "55postman mullti user test boody",
+        "subject": "55postman mullti user test subject",
+        "sender_id": 17414,
+        "sender_type": "User",
+        "conversation_id": 2681,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-23T08:29:17.040Z",
+        "created_at": "2017-02-23T08:29:17.040Z",
+        "global": false,
+        "expires": null
+      },
+      {
+        "id": 2689,
+        "body": "2nd msg from user1 to ashish body",
+        "subject": "2nd msg from user1 to ashish subject",
+        "sender_id": 17414,
+        "sender_type": "User",
+        "conversation_id": 2684,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-23T14:53:35.221Z",
+        "created_at": "2017-02-23T14:53:35.221Z",
+        "global": false,
+        "expires": null
+      },
+      {
+        "id": 2682,
+        "body": "44postman mullti user test boody",
+        "subject": "44postman mullti user test subject",
+        "sender_id": 17414,
+        "sender_type": "User",
+        "conversation_id": 2680,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-23T08:24:52.760Z",
+        "created_at": "2017-02-23T08:24:52.760Z",
+        "global": false,
+        "expires": null
+      }
+    ]
+  }
+}
+
+17) Show Conversation
+Url :- http://localhost:3000/api/v1/conversations/2681?authentication_token=-gjC3EgwAri2cuMPzEYx
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+  "success": true,
+  "info": "conversation",
+  "data": {
+    "messages": [
+      {
+        "id": 2693,
+        "body": "3rd Reply from user",
+        "subject": "55postman mullti user test subject",
+        "sender_id": 17414,
+        "sender_type": "User",
+        "conversation_id": 2681,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-24T13:27:04.910Z",
+        "created_at": "2017-02-24T13:27:04.910Z",
+        "global": false,
+        "expires": null
+      },
+      {
+        "id": 2692,
+        "body": "2nd Reply from user1",
+        "subject": "55postman mullti user test subject",
+        "sender_id": 17414,
+        "sender_type": "User",
+        "conversation_id": 2681,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-23T16:23:53.149Z",
+        "created_at": "2017-02-23T16:23:53.149Z",
+        "global": false,
+        "expires": null
+      },
+      {
+        "id": 2691,
+        "body": "1nd Reply from user1",
+        "subject": "55postman mullti user test subject",
+        "sender_id": 17414,
+        "sender_type": "User",
+        "conversation_id": 2681,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-23T16:12:15.129Z",
+        "created_at": "2017-02-23T16:12:15.129Z",
+        "global": false,
+        "expires": null
+      },
+      {
+        "id": 2690,
+        "body": "rply of 2681 conversation from user1 to user",
+        "subject": "55postman mullti user test subject",
+        "sender_id": 17414,
+        "sender_type": "User",
+        "conversation_id": 2681,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-23T16:12:01.296Z",
+        "created_at": "2017-02-23T16:12:01.296Z",
+        "global": false,
+        "expires": null
+      },
+      {
+        "id": 2686,
+        "body": "2nd Reply from user",
+        "subject": "55postman mullti user test subject",
+        "sender_id": 17422,
+        "sender_type": "User",
+        "conversation_id": 2681,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-23T09:39:30.096Z",
+        "created_at": "2017-02-23T09:39:30.096Z",
+        "global": false,
+        "expires": null
+      },
+      {
+        "id": 2685,
+        "body": "Reply from user",
+        "subject": "55postman mullti user test subject",
+        "sender_id": 17422,
+        "sender_type": "User",
+        "conversation_id": 2681,
+        "draft": false,
+        "notification_code": null,
+        "notified_object_id": null,
+        "notified_object_type": null,
+        "attachment": {
+          "url": null
+        },
+        "updated_at": "2017-02-23T09:36:52.923Z",
+        "created_at": "2017-02-23T09:36:52.923Z",
+        "global": false,
+        "expires": null
+      }
+    ]
+  }
+}
+
+18) All Followers
+Url :- http://localhost:3000/api/v1/followings?authentication_token=-gjC3EgwAri2cuMPzEYx
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+  "success": false,
+  "info": "No Followers..."
+}
+
+
+19) Show Near by peoples
+Url :- http://localhost:3000/api/v1/near_by_peoples?authentication_token=-gjC3EgwAri2cuMPzEYx
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+  "success": true,
+  "info": "Near by People",
+  "data": {
+    "peoples": [
+      {
+        "id": 17355,
+        "email": "ashishghate5@gmail.com",
+        "provider": null,
+        "uid": null,
+        "first_name": "ashish",
+        "last_name": "ghate",
+        "image": {
+          "small": "default-avatar.jpg",
+          "thumb": "default-avatar.jpg",
+          "large": "default-avatar.jpg"
+        },
+        "gender": null,
+        "facebook_url": null,
+        "education": "MCA",
+        "work": "jsmwic pvt ltd",
+        "website": "",
+        "about": "i am software developer",
+        "cover_photo": "/fallback/square_default-cover.jpg",
+        "admin": false,
+        "forem_admin": false,
+        "forem_state": "approved",
+        "forem_auto_subscribe": false,
+        "twitter_username": "aghate143",
+        "linked_in": "",
+        "google_plus_id": "ashishghate5@gmail.com",
+        "primary_segment_id": null,
+        "secondary_segment_id": null,
+        "phone_number": "8103316142",
+        "pinterest_username": "",
+        "resume": null,
+        "auto_follow": false,
+        "social_link_vine": null,
+        "social_link_youtube": "",
+        "social_link_tumblr": "",
+        "social_link_custom_facebook_url": null,
+        "social_link_instagram": "",
+        "social_link_whatsapp": "",
+        "social_link_snapchat": "",
+        "roles_mask": null,
+        "notification_by_email": true,
+        "company_name": null,
+        "title": "ROR",
+        "event_notification": true,
+        "focus_areas": "[{\"id\":33,\"name\":\"Architecture/Home Decor\",\"created_at\":\"2015-06-12T19:16:05.678Z\",\"updated_at\":\"2015-06-12T19:16:05.678Z\",\"position\":0},{\"id\":34,\"name\":\"Arts\",\"created_at\":\"2015-06-12T19:16:05.684Z\",\"updated_at\":\"2015-06-12T19:16:05.684Z\",\"position\":1},{\"id\":38,\"name\":\"Beauty\",\"created_at\":\"2015-06-12T19:16:05.693Z\",\"updated_at\":\"2015-06-12T19:16:05.693Z\",\"position\":5},{\"id\":40,\"name\":\"Business\",\"created_at\":\"2015-06-12T19:16:05.697Z\",\"updated_at\":\"2015-06-12T19:16:05.697Z\",\"position\":7},{\"id\":45,\"name\":\"Fashion\",\"created_at\":\"2015-06-12T19:16:05.708Z\",\"updated_at\":\"2015-06-12T19:16:05.708Z\",\"position\":12},{\"id\":49,\"name\":\"Fashion/Women\",\"created_at\":\"2015-06-12T19:16:05.716Z\",\"updated_at\":\"2015-06-12T19:16:05.716Z\",\"position\":16},{\"id\":50,\"name\":\"Film\",\"created_at\":\"2015-06-12T19:16:05.719Z\",\"updated_at\":\"2015-06-12T19:16:05.719Z\",\"position\":17},{\"id\":51,\"name\":\"Finance\",\"created_at\":\"2015-06-12T19:16:05.720Z\",\"updated_at\":\"2015-06-12T19:16:05.720Z\",\"position\":18},{\"id\":52,\"name\":\"Fitness\",\"created_at\":\"2015-06-12T19:16:05.723Z\",\"updated_at\":\"2015-06-12T19:16:05.723Z\",\"position\":19},{\"id\":53,\"name\":\"Gaming\",\"created_at\":\"2015-06-12T19:16:05.725Z\",\"updated_at\":\"2015-06-12T19:16:05.725Z\",\"position\":20},{\"id\":55,\"name\":\"Government\",\"created_at\":\"2015-06-12T19:16:05.730Z\",\"updated_at\":\"2015-06-12T19:16:05.730Z\",\"position\":22},{\"id\":57,\"name\":\"Health \\u0026 Wellness\",\"created_at\":\"2015-06-12T19:16:05.734Z\",\"updated_at\":\"2015-06-12T19:16:05.734Z\",\"position\":24},{\"id\":65,\"name\":\"Media\",\"created_at\":\"2015-06-12T19:16:05.750Z\",\"updated_at\":\"2015-06-12T19:16:05.750Z\",\"position\":32},{\"id\":66,\"name\":\"Music\",\"created_at\":\"2015-06-12T19:16:05.752Z\",\"updated_at\":\"2015-06-12T19:16:05.752Z\",\"position\":33},{\"id\":72,\"name\":\"Politics\",\"created_at\":\"2015-06-12T19:16:05.810Z\",\"updated_at\":\"2015-06-12T19:16:05.810Z\",\"position\":39},{\"id\":74,\"name\":\"Real Estate\",\"created_at\":\"2015-06-12T19:16:05.815Z\",\"updated_at\":\"2015-06-12T19:16:05.815Z\",\"position\":41},{\"id\":84,\"name\":\"Wedding \",\"created_at\":\"2015-06-12T19:16:05.836Z\",\"updated_at\":\"2015-06-12T19:16:05.836Z\",\"position\":51},{\"id\":85,\"name\":\"Women\",\"created_at\":\"2015-06-12T19:16:05.838Z\",\"updated_at\":\"2015-06-12T19:16:05.838Z\",\"position\":52}]",
+        "user_segments": "[{\"id\":33,\"position\":0,\"name\":\"Blogger\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":34,\"position\":1,\"name\":\"Brand Rep\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":35,\"position\":2,\"name\":\"Casting\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":37,\"position\":4,\"name\":\"Event Management\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":38,\"position\":5,\"name\":\"Event Production\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":39,\"position\":6,\"name\":\"Graphic Design\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":41,\"position\":8,\"name\":\"Influencer\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":43,\"position\":10,\"name\":\"Marketing\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":46,\"position\":13,\"name\":\"Photography\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":48,\"position\":15,\"name\":\"Social Media\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":53,\"position\":20,\"name\":\"Web Design Writing\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"}]",
+        "address_attributes": "\"MP\"",
+        "created_at": "2017-02-21",
+        "updated_at": "2017-02-24"
+      },
+      {
+        "id": 17422,
+        "email": "user1@test.com",
+        "provider": null,
+        "uid": null,
+        "first_name": "user1",
+        "last_name": "test",
+        "image": {
+          "small": "default-avatar.jpg",
+          "thumb": "default-avatar.jpg",
+          "large": "default-avatar.jpg"
+        },
+        "gender": null,
+        "facebook_url": null,
+        "education": "MCA",
+        "work": "jsmwic pvt ltd",
+        "website": "",
+        "about": "test baout us\\",
+        "cover_photo": "/fallback/square_default-cover.jpg",
+        "admin": false,
+        "forem_admin": false,
+        "forem_state": "approved",
+        "forem_auto_subscribe": false,
+        "twitter_username": "",
+        "linked_in": "",
+        "google_plus_id": "",
+        "primary_segment_id": null,
+        "secondary_segment_id": null,
+        "phone_number": "",
+        "pinterest_username": "",
+        "resume": null,
+        "auto_follow": false,
+        "social_link_vine": null,
+        "social_link_youtube": "",
+        "social_link_tumblr": "",
+        "social_link_custom_facebook_url": null,
+        "social_link_instagram": "",
+        "social_link_whatsapp": "",
+        "social_link_snapchat": "",
+        "roles_mask": null,
+        "notification_by_email": true,
+        "company_name": null,
+        "title": "t",
+        "event_notification": true,
+        "focus_areas": "[{\"id\":35,\"name\":\"Auto\",\"created_at\":\"2015-06-12T19:16:05.687Z\",\"updated_at\":\"2015-06-12T19:16:05.687Z\",\"position\":2},{\"id\":36,\"name\":\"B2B\",\"created_at\":\"2015-06-12T19:16:05.689Z\",\"updated_at\":\"2015-06-12T19:16:05.689Z\",\"position\":3},{\"id\":37,\"name\":\"B2C\",\"created_at\":\"2015-06-12T19:16:05.691Z\",\"updated_at\":\"2015-06-12T19:16:05.691Z\",\"position\":4},{\"id\":38,\"name\":\"Beauty\",\"created_at\":\"2015-06-12T19:16:05.693Z\",\"updated_at\":\"2015-06-12T19:16:05.693Z\",\"position\":5}]",
+        "user_segments": "[{\"id\":34,\"position\":1,\"name\":\"Brand Rep\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":35,\"position\":2,\"name\":\"Casting\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"},{\"id\":36,\"position\":3,\"name\":\"Copyediting\",\"ancestry\":null,\"created_at\":\"2015-06-12\",\"updated_at\":\"2015-06-12\"}]",
+        "address_attributes": "\"MP\"",
+        "created_at": "2017-02-23",
+        "updated_at": "2017-02-24"
+      }
+    ]
+  }
+}
+
+20) Post show
+Url :- http://localhost:3000/api/v1/api_posts/357204?authentication_token=k9jn1jaReN85HkczyghY
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+    "success": true,
+    "info": "Post",
+    "data": {
+        "post": {
+            "id": 357204,
+            "topic_id": 94374,
+            "forum_name": "Music",
+            "description": "api post test 3",
+            "user_id": 17355,
+            "created_at": "2017-06-15T05:58:31.682Z",
+            "updated_at": "2017-06-15T05:58:31.682Z",
+            "state": "approved",
+            "video": null,
+            "image": null,
+            "media": null,
+            "username": "ashish1 ghate1",
+            "usertitle": "title",
+            "comment_count": 1,
+            "avatar": {
+                "small": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/small_small.jpg?X-Amz-Expires=600&X-Amz-Date=20170712T094910Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170712/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=6cfcbbcc10025253620d40383a1a97591d0fca7f4576c4c45f862b6a22152b7d",
+                "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/thumb_small.jpg?X-Amz-Expires=600&X-Amz-Date=20170712T094910Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170712/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=1ac636098ad4a464166ac87c8ff9cefef94766bc227087abc7ff9c6f53db445b",
+                "large": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/large_small.jpg?X-Amz-Expires=600&X-Amz-Date=20170712T094910Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170712/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=f87760dbfe635d1eed007db5868fad49886b3511a79bfafeff03db5ad4f4418e"
+            }
+        }
+    }
+}
+21) Create new post
+Url :- http://localhost:3000/api/v1/api_posts?authentication_token=fBVTRnfG9oooy1Ms3yry
+Method :- Post
+Header :- Accept: application/json, 
+Content-Type: application/json
+Data :- 
+  { "post": { "body": "api post test 2", "forum_id": 17, "media_url" : "" } }
+Output :-
+  {
+  "success": true,
+  "info": "Posts created",
+  "data": {
+    "posts": [
+      {
+        "id": 357174,
+        "topic_id": 94356,
+        "text": "api post test 2",
+        "user_id": 17414,
+        "created_at": "2017-03-07T08:21:13.401Z",
+        "updated_at": "2017-03-07T08:21:13.401Z",
+        "reply_to_id": null,
+        "state": "approved",
+        "notified": true,
+        "facebook_post_id": null,
+        "video": null,
+        "image": null,
+        "media": ""
+      }
+    ]
+  }
+}
+
+22) Comment on post
+Url :- http://localhost:3000/api/v1/reply?authentication_token=RCCi4QcV3emoEQmAPgpi
+Method :- Post
+Header :- Accept: application/json, 
+Content-Type: application/json
+Data :- 
+  { "post": { "body": "api post test 2", "reply_to_id": 357164,"topic_id" : 94352 } }
+Output :-
+  {
+  "success": true,
+  "info": "Posts created",
+  "data": {
+    "posts": [
+      {
+        "id": 357164,
+        "topic_id": 94352,
+        "text": "post testing from user",
+        "user_id": 17414,
+        "created_at": "2017-03-07T04:41:30.889Z",
+        "updated_at": "2017-03-07T04:41:30.889Z",
+        "reply_to_id": null,
+        "state": "approved",
+        "notified": true,
+        "facebook_post_id": null,
+        "video": null,
+        "image": null,
+        "media": ""
+      },
+      {
+        "id": 357165,
+        "topic_id": 94352,
+        "text": "testing post rply from user ",
+        "user_id": 17414,
+        "created_at": "2017-03-07T04:51:12.962Z",
+        "updated_at": "2017-03-07T04:51:12.962Z",
+        "reply_to_id": 357164,
+        "state": "approved",
+        "notified": true,
+        "facebook_post_id": null,
+        "video": null,
+        "image": null,
+        "media": null
+      },
+      {
+        "id": 357172,
+        "topic_id": 94352,
+        "text": "api post test 2",
+        "user_id": 17414,
+        "created_at": "2017-03-07T07:07:12.329Z",
+        "updated_at": "2017-03-07T07:07:12.329Z",
+        "reply_to_id": null,
+        "state": "approved",
+        "notified": true,
+        "facebook_post_id": null,
+        "video": null,
+        "image": null,
+        "media": null
+      }
+    ]
+  }
+}
+
+23) Subscribe topic
+Url :- http://localhost:3000/api/v1/subscribe/:topic_id?authentication_token=-gjC3EgwAri2cuMPzEYx
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+  "success": true,
+  "info": "subscribed successfully"
+}
+
+24) Unsubscribe topic
+Url :- http://localhost:3000/api/v1/unsubscribe/:topic_id?authentication_token=-gjC3EgwAri2cuMPzEYx
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+  "success": true,
+  "info": "unsubscribed successfully"
+}
+
+24) Follow
+Url :- http://localhost:3000/api/v1/follow/:user_id?authentication_token=-gjC3EgwAri2cuMPzEYx
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+  "success": true,
+  "info": "followed"
+}
+
+25) Unfollow
+Url :- http://localhost:3000/api/v1/follow/:user_id?authentication_token=-gjC3EgwAri2cuMPzEYx
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+  "success": true,
+  "info": "unfollowed"
+}
+
+26) Update user groups
+Url :- http://localhost:3000/api/v1/update_groups?authentication_token=RCCi4QcV3emoEQmAPgpi
+Method :- Post
+Header :- Accept: application/json, 
+Content-Type: application/json
+Data :- 
+  { "group": { "groups": { "0" : 1, "1" : 2, "2" : 3 } } }
+Output :-
+{
+  "success": true,
+  "info": "Groups",
+  "data": {
+    "updated_user_groups": [
+      {
+        "id": 3,
+        "owner_id": 2,
+        "name": "Cannes",
+        "description": "<p>Cannes movie festival.</p>",
+        "image": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/image/3/cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=74af697db4ff79b7b1315ab42929e1ab36a007e1722a67a00c5ec50587442db5",
+          "large": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/3/large_cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=d19de28d34798251fe83913fce1f384e69b2c08c645c838d0a46368d4da831b9"
+          },
+          "thumb": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/3/thumb_cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=f45584f986d7ee8ffceb37b7cbffe40216c4f6da01ef730f27563597c08fea59"
+          },
+          "small": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/3/small_cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=069236f986a6afe2ca410b327258249cf9bb10536c0717d90da5111254257ee0"
+          },
+          "tiny": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/3/tiny_cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=d048e8fc9b4c7f4023aa598a9afab28d5189cde6a60b917f24594564f1227767"
+          }
+        },
+        "cover_photo": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/3/cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=858704bd61756a0acbb7d7dd460904881cc0f0755c34caf1937260d480f5ef5e",
+          "square": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/3/square_cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=459f1135bc24a8f06aa09ec04fd1d4ed0c7d90129a0fd689a983db0ea27e5013"
+          }
+        },
+        "created_at": "2014-10-28T18:07:43.619Z",
+        "updated_at": "2014-12-10T23:25:37.768Z",
+        "slug": "cannes",
+        "sticky": true,
+        "forum_id": 2
+      },
+      {
+        "id": 2,
+        "owner_id": 2,
+        "name": "Father's Day",
+        "description": "<p>Daddy</p>",
+        "image": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/image/2/FathersD.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=3070cc88a7411b84021eae90e17fd45fa1bd1428061f4243524e17667ef3e7e6",
+          "large": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/2/large_FathersD.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=39ea5747cc0181b14a708de24f148498223108e1c7d0608e9a3713a87f6ae90b"
+          },
+          "thumb": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/2/thumb_FathersD.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=80db9c652eb35d85488696a0ad9b39117a2ce1dd1b805b8577143667ea61bb69"
+          },
+          "small": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/2/small_FathersD.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=87b66a0c8da84045d98d70b692fc6766ebcc13ef8ca491462f68346e038f6b30"
+          },
+          "tiny": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/2/tiny_FathersD.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=d556a89a8b9cbd4b5e3a59063af4f4ef633f61c5a54e84cd00c0c42970aae0f1"
+          }
+        },
+        "cover_photo": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/2/Happy-Fathers-Day.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=e8de52bddd489bdf84850feec4bd994879efa9f89cc6b62c5b5337738386fd64",
+          "square": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/2/square_Happy-Fathers-Day.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=403f2560dd9909b412660c389ab1f1dced76bf5d627cd645df9efc561ae82752"
+          }
+        },
+        "created_at": "2014-09-08T23:46:40.609Z",
+        "updated_at": "2015-04-07T18:44:07.748Z",
+        "slug": "father-s-day",
+        "sticky": true,
+        "forum_id": 19
+      },
+      {
+        "id": 1,
+        "owner_id": 2,
+        "name": "World Cup",
+        "description": "<p>Czars going to the World Cup &mdash; or putting together events in the U.S.A. for the World Cup &mdash; please network here!</p>",
+        "image": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/image/1/world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=fc945c0b49d21b8138d2f97801d500e3f84b88a433062c0879c1a4f31679ee65",
+          "large": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/1/large_world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=ae71c86046001ece8fecc0c7b3f81b9d9df6976efcdb44efa03690ba2b61dae8"
+          },
+          "thumb": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/1/thumb_world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=5309c910d17c8f8318103f9734d719989d467a4838afe8b4d0f7cd4734747b10"
+          },
+          "small": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/1/small_world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=0b84d0f0fb104f6e2b3fe5d05d8cd56e15ce2affa96e724946ef804ffcc65136"
+          },
+          "tiny": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/1/tiny_world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=74d3011d6ce40f0a8bcb1c0a534c4068f7911a53a7cab97d9222add0bbbaded7"
+          }
+        },
+        "cover_photo": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/1/world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=f137925c242f039efefd893afbe616afaa2894eb7a7f9980e8554c2b3acdf09d",
+          "square": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/1/square_world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T161451Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=e9cc05c11c53c2c8f747704581a04c421fa6f3672eb30e9eba54ae7bbd745ef8"
+          }
+        },
+        "created_at": "2014-09-08T23:35:15.763Z",
+        "updated_at": "2015-03-11T17:41:08.224Z",
+        "slug": "world-cup",
+        "sticky": false,
+        "forum_id": 1
+      }
+    ]
+  }
+}
+
+27) Show user groups
+Url :- http://localhost:3000/api/v1/groups?authentication_token=3wz8iM74SNmKC9Ddxr8K
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+  "success": true,
+  "info": "Groups",
+  "data": {
+    "user_groups": [
+      {
+        "id": 3,
+        "owner_id": 2,
+        "name": "Cannes",
+        "description": "<p>Cannes movie festival.</p>",
+        "image": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/image/3/cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=508fa7d826429d1a7e65ed22992ee57c3433c3c4adb911269db27b2b8c566c9d",
+          "large": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/3/large_cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=34811af86792e0a6260d7b7b415d24e9039e372bc9f6df0cceeb35c88b9291ea"
+          },
+          "thumb": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/3/thumb_cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=a138c90a28c0f50183d17de8020c014aecfde91825b99f9aca08bf18d7f6eb49"
+          },
+          "small": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/3/small_cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c5a71b4569593930b35c1b491c422d66c90d7e8f9ad01c69cff6bdcd6a8823c9"
+          },
+          "tiny": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/3/tiny_cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=0169cee9272ab1b090cfb261c029cd8491201c7b60d3861dfdbc4cd5f912ba54"
+          }
+        },
+        "cover_photo": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/3/cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=86a10237037f6df6c56bc2b31d8569596e0b9be3a3185b41f71042ea90c09981",
+          "square": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/3/square_cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=0276317e48931c31c02f9af94f277d2d58cf324530372746707b9ba399ce2931"
+          }
+        },
+        "created_at": "2014-10-28T18:07:43.619Z",
+        "updated_at": "2014-12-10T23:25:37.768Z",
+        "slug": "cannes",
+        "sticky": true,
+        "forum_id": 2
+      },
+      {
+        "id": 2,
+        "owner_id": 2,
+        "name": "Father's Day",
+        "description": "<p>Daddy</p>",
+        "image": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/image/2/FathersD.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=879ccda1a784739e7371a9e1038687e1168532f74d2815559a6a5adc43a7a504",
+          "large": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/2/large_FathersD.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=2d289b712a8fde4b4c756f7b4b2e1e426bfd32dd7041a785cc461378af727fb0"
+          },
+          "thumb": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/2/thumb_FathersD.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=981fe829f5c1c0f0d4bd504bf45a75d94f5f7018e7b94c01c8455cea6f2a6e4a"
+          },
+          "small": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/2/small_FathersD.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=273f2eab3e28e41496bc51e52513e5ba18142c70718cd4f35cba0c01ffa30aee"
+          },
+          "tiny": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/2/tiny_FathersD.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=8049e66527df9abba26c80d134812b3638966a3cc4dfb4bbf2fc260d33fda0f5"
+          }
+        },
+        "cover_photo": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/2/Happy-Fathers-Day.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=e4cd1242e02ea96ade0e80c4710c9c801fe0ec72b53f70aea55812e94c765dae",
+          "square": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/2/square_Happy-Fathers-Day.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=290632f1ed4d01efdcb75ad4268929c0c0ff2a4b367ec5eff412526ff1f043b0"
+          }
+        },
+        "created_at": "2014-09-08T23:46:40.609Z",
+        "updated_at": "2015-04-07T18:44:07.748Z",
+        "slug": "father-s-day",
+        "sticky": true,
+        "forum_id": 19
+      },
+      {
+        "id": 1,
+        "owner_id": 2,
+        "name": "World Cup",
+        "description": "<p>Czars going to the World Cup &mdash; or putting together events in the U.S.A. for the World Cup &mdash; please network here!</p>",
+        "image": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/image/1/world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=48c175e13d46c21892deaacb9fa948c10b9ee2c742b896fee1105527929130f9",
+          "large": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/1/large_world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=e548f38cf706887cf19f57264f7454e75b07a9346485a20f5a12ddf41d61296e"
+          },
+          "thumb": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/1/thumb_world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=952116de77dadae3cf8a5f03961f6d59169570419d1137147aa718227205539f"
+          },
+          "small": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/1/small_world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c2b808e8cb8682b4a6024c009e07d2c2694b5cfabb3b856c7b431b24f4a39775"
+          },
+          "tiny": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/1/tiny_world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=ec76197f3feddd843ff15a460e8539707eb2d8c40e91f4b2cb25664be3413ec0"
+          }
+        },
+        "cover_photo": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/1/world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=871c63c4ba8067b2afed357fbb6dcb0bdf12ce9bec8da9289590d354f76e12a4",
+          "square": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/1/square_world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T162046Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=53b050b4690537ddd563fb387ce5a58ffede671298fb7e9b1f1437495aa5fbe1"
+          }
+        },
+        "created_at": "2014-09-08T23:35:15.763Z",
+        "updated_at": "2015-03-11T17:41:08.224Z",
+        "slug": "world-cup",
+        "sticky": false,
+        "forum_id": 1
+      }
+    ]
+  }
+}
+
+28) Add user group
+Url :- http://localhost:3000/api/v1/add_groups?authentication_token=3wz8iM74SNmKC9Ddxr8K
+Method :- Post
+Header :- Accept: application/json, 
+Content-Type: application/json
+Data :- 
+  { "group": { "groups": { "0" : 1, "1" : 4, "2" : 5 } } }
+Output :-
+{
+  "success": true,
+  "info": "Groups",
+  "data": {
+    "updated_user_groups": [
+      {
+        "id": 3,
+        "owner_id": 2,
+        "name": "Cannes",
+        "description": "<p>Cannes movie festival.</p>",
+        "image": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/image/3/cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=53c54fe047fc0b433f9c7d4ed3b9f9047cf8524a7993564268864d50a0c8d63f",
+          "large": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/3/large_cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=654a00abcce0905b123c8a64745cd9f1c6faa8fefe5bf6baa59f617c515205f8"
+          },
+          "thumb": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/3/thumb_cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=8acc7c0ee44083e4286291174603ab475a789b95ca0ea345d4be5457d66fdada"
+          },
+          "small": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/3/small_cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c384c82dc699eb32b14d5f514bc3e1c75a7b24be7388a2ce3dc3f119dea67bb7"
+          },
+          "tiny": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/3/tiny_cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=226d71ed33e3fa2aad8007aed8be05c0c89e819c5883157aae7456998043b126"
+          }
+        },
+        "cover_photo": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/3/cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=f8ddc003b06b42409e0c57cc8ec41e2acf48bd59c6c1ae7d54d193a22309e668",
+          "square": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/3/square_cannes__140114115647.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=3ae5c06175a1e5ed484ef42e2047d6d5a3abb2466fceab05f381e4a41c3bab7a"
+          }
+        },
+        "created_at": "2014-10-28T18:07:43.619Z",
+        "updated_at": "2014-12-10T23:25:37.768Z",
+        "slug": "cannes",
+        "sticky": true,
+        "forum_id": 2
+      },
+      {
+        "id": 4,
+        "owner_id": 2,
+        "name": "Fashion Week New York Women's",
+        "description": "<p>What we wear reflects our worldview.</p>",
+        "image": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/image/4/Byblos_Milano_fall_winter_2014_2015_collection_Milan_Fashion_Week2.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=11930b8374b7cd681ab70c4794bfeda5e440b115fa290522ac047c0bce826718",
+          "large": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/4/large_Byblos_Milano_fall_winter_2014_2015_collection_Milan_Fashion_Week2.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=2c8634a9db5fd24f1bd120c0c04714d9ca3a88f7e495b2f8fc04906804bb26b2"
+          },
+          "thumb": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/4/thumb_Byblos_Milano_fall_winter_2014_2015_collection_Milan_Fashion_Week2.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=be28fc9d7c4a0eaa61c7ca82e9dcbf75aa86d0665cf5138bf17f5ea2e40d7673"
+          },
+          "small": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/4/small_Byblos_Milano_fall_winter_2014_2015_collection_Milan_Fashion_Week2.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=5b937d33a711a0b036797616e110cae44b16698b8342de5b4a0829b0267dc9fc"
+          },
+          "tiny": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/4/tiny_Byblos_Milano_fall_winter_2014_2015_collection_Milan_Fashion_Week2.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=69276e2b92bc767a787fc0084f82ce834e1a193749b80a79ac7bcb9099ebd944"
+          }
+        },
+        "cover_photo": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/4/Byblos_Milano_fall_winter_2014_2015_collection_Milan_Fashion_Week2.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=4343cf7ef6fb7ea422460588a56a446a4d0a8b92d52fdeabe9095fb42a2cb63c",
+          "square": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/4/square_Byblos_Milano_fall_winter_2014_2015_collection_Milan_Fashion_Week2.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=64cc1c4ff2277b239813ffd2647a973c915bb2e79481156d56b9a1914506624f"
+          }
+        },
+        "created_at": "2014-11-26T18:36:35.567Z",
+        "updated_at": "2015-04-07T15:53:31.852Z",
+        "slug": "fashion-week-new-york-women-s",
+        "sticky": true,
+        "forum_id": 3
+      },
+      {
+        "id": 2,
+        "owner_id": 2,
+        "name": "Father's Day",
+        "description": "<p>Daddy</p>",
+        "image": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/image/2/FathersD.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=0af47fe6cd72c89d9d559a4b6aac53695a39c4eaef65ee624f2b462ff0722682",
+          "large": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/2/large_FathersD.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=7bfee844b0757b9915c6f80be158ac52f9f7b057c39b0f2677652d4549e900ae"
+          },
+          "thumb": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/2/thumb_FathersD.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=72aa88bf1e7e09ed14bc2800b7e77ddb1e8b1601a9ebc951004aaea5e59af7f2"
+          },
+          "small": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/2/small_FathersD.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c8b46de0390c4fa11cb08a5f872a753459534ba68a8851b27134b1dcdfbcaec3"
+          },
+          "tiny": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/2/tiny_FathersD.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c24daf36fea3d265601129b980f726a60f52532a5b3f498bb901fcf27083a9cf"
+          }
+        },
+        "cover_photo": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/2/Happy-Fathers-Day.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=b556051c2284c25657a40a5b3ccb2d9eba8665c55112bd500bd659070ee5e0c2",
+          "square": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/2/square_Happy-Fathers-Day.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=e0443c62601948f112d8c90fb531b92b68367598b90520d76c00679dccf80e52"
+          }
+        },
+        "created_at": "2014-09-08T23:46:40.609Z",
+        "updated_at": "2015-04-07T18:44:07.748Z",
+        "slug": "father-s-day",
+        "sticky": true,
+        "forum_id": 19
+      },
+      {
+        "id": 5,
+        "owner_id": 3,
+        "name": "Super Bowl ",
+        "description": "This is a group for Czars who want to network around Super Bowl ",
+        "image": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/image/5/Football.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=22f0f199f34bc1ea3b4473d802ebf62c0e77ad716ceebe4e4c6c731a782a368e",
+          "large": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/5/large_Football.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=0b0b30f9e0f5254d40c7f9e67b3b3d5b4d80e5c260125aefb24d297c66f053aa"
+          },
+          "thumb": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/5/thumb_Football.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=4af2ada3b533ad665ccd8c7adbeea224ee181b7f17ad6b579f0249ced9123566"
+          },
+          "small": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/5/small_Football.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c9be24c6896f6c0cb6e14f41f2fca1717fe41e790ebdc219e245a3fe9e0bc333"
+          },
+          "tiny": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/5/tiny_Football.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=0dacd610bfd28c5a85b7c8a14a21f809475a4377c47b0afb0c6e290dd9922840"
+          }
+        },
+        "cover_photo": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/5/superbowl-xlix_home_page.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=edc91b09a49719b83c5abfa1783adbc026291ab4a45ba020295cb7fc5756e852",
+          "square": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/5/square_superbowl-xlix_home_page.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=4d5852029f7e13f42a4a0edb83f0bc6df52f7cbff8a883bf044d4dae949e4563"
+          }
+        },
+        "created_at": "2014-11-26T19:22:36.401Z",
+        "updated_at": "2016-12-20T09:53:39.013Z",
+        "slug": "super-bowl",
+        "sticky": true,
+        "forum_id": 111
+      },
+      {
+        "id": 1,
+        "owner_id": 2,
+        "name": "World Cup",
+        "description": "<p>Czars going to the World Cup &mdash; or putting together events in the U.S.A. for the World Cup &mdash; please network here!</p>",
+        "image": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/image/1/world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=30dac0e059019c39b7e8236ad73e29d0dfce72e99600fc9bc5f72267f940d4fa",
+          "large": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/1/large_world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=afd09513da2ccc8d2736724b0e96aa1f69b3fe0e57887bb42de7b66953f22ae5"
+          },
+          "thumb": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/1/thumb_world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=8adcb0b1c655245cd3c2569f3092697f3033ce262547a3c7fde899e71b49007d"
+          },
+          "small": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/1/small_world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=b373a2c38c3a1e604edf0086aac93c9e2c3ec73e0367973c3b9db7fc3cf958f8"
+          },
+          "tiny": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/image/1/tiny_world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=b8b89d6e203838768673419d689bc54bf2d7725603d7260af9a04c387ffaf9fe"
+          }
+        },
+        "cover_photo": {
+          "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/1/world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=4cee2f25e79228e28a9ef0059f58fba48c7c20b74b1d5d4c311ce2f1979ad341",
+          "square": {
+            "url": "https://czardom.s3.amazonaws.com/uploads/group/cover_photo/1/square_world-cup.jpg?X-Amz-Expires=600&X-Amz-Date=20170307T171845Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170307/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=8a06d551f82d17dfac5b06118db260ddd0f51411da77b433215085773a8a8f54"
+          }
+        },
+        "created_at": "2014-09-08T23:35:15.763Z",
+        "updated_at": "2015-03-11T17:41:08.224Z",
+        "slug": "world-cup",
+        "sticky": false,
+        "forum_id": 1
+      }
+    ]
+  }
+}
+
+
+Admin Tips(Pitch Bitch) Section :
+29) All Tips
+Url :- http://localhost:3000/api/v1/admin/tips?authentication_token=SskCKDujwV_wAycxr4Li
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+  "success": true,
+  "info": "Tips",
+  "data": {
+    "tips": [
+      {
+        "id": 1,
+        "content": "<p>PITCH BITCH</p>\r\n\r\n<p>The &quot;Pitch Bitch&quot; series of videos interviews top producers of major shows, and offers tips from them on how to most effectively pitch their shows with segments, ideas and more. It&#39;s ultimate &quot;insider info&quot; for top publicists who deal with the biggest names in show biz - enjoy!</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p style=\"text-align:center\">How to pitch &quot;HARRY&quot;:</p>\r\n\r\n<p style=\"text-align:center\"><iframe frameborder=\"0\" height=\"315\" src=\"https://www.youtube.com/embed/prHHpCgg2LE\" width=\"560\"></iframe></p>\r\n\r\n<p style=\"text-align:center\">&nbsp;</p>\r\n\r\n<p style=\"text-align:center\">&nbsp;</p>\r\n\r\n<p style=\"text-align:center\">How to pitch &quot;ON THE STORY WITH ERICA HILL&quot;:</p>\r\n\r\n<p style=\"text-align:center\">&nbsp;</p>\r\n\r\n<p dir=\"rtl\" style=\"text-align:center\"><iframe frameborder=\"0\" height=\"315\" scrolling=\"no\" src=\"https://www.youtube.com/embed/pj_xhzHFQ2I\" width=\"560\"></iframe></p>\r\n\r\n<p style=\"text-align:center\">&nbsp;</p>\r\n",
+        "created_at": "2016-10-25T23:45:35.712Z",
+        "updated_at": "2016-12-30T23:14:06.588Z"
+      },
+      {
+        "id": 2,
+        "content": "<p>testing tip</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n",
+        "created_at": "2017-03-08T03:48:09.393Z",
+        "updated_at": "2017-03-08T03:48:09.393Z"
+      }
+    ]
+  }
+}
+
+30) Create Tip
+Url :- http://localhost:3000/api/v1/admin/tips?authentication_token=SskCKDujwV_wAycxr4Li
+Method :- Post
+Header :- Accept: application/json, 
+Content-Type: application/json
+Data :- 
+  { "tip": { "content": "Api tip test create" } }
+Output :-
+{
+  "success": true,
+  "info": "Tips",
+  "data": {
+    "tip": {
+      "id": 3,
+      "content": "Api tip test create",
+      "created_at": "2017-03-08T06:58:21.139Z",
+      "updated_at": "2017-03-08T06:58:21.139Z"
+    }
+  }
+}
+
+31) Update Tip
+Url :- http://localhost:3000/api/v1/admin/tips/:tip_id?authentication_token=SskCKDujwV_wAycxr4Li
+Method :- Put
+Header :- Accept: application/json, 
+Content-Type: application/json
+Data :- 
+  { "tip": { "content": "Api tip test create update" } }
+Output :-
+{
+  "success": true,
+  "info": "Tips",
+  "data": {
+    "tip": {
+      "id": 3,
+      "content": "Api tip test create update",
+      "created_at": "2017-03-08T06:58:21.139Z",
+      "updated_at": "2017-03-08T07:00:28.554Z"
+    }
+  }
+}
+
+32) Show Tip
+Url :- http://localhost:3000/api/v1/admin/tips/:tip_id?authentication_token=SskCKDujwV_wAycxr4Li
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+  "success": true,
+  "info": "Tip",
+  "data": {
+    "tip": {
+      "id": 3,
+      "content": "Api tip test create update",
+      "created_at": "2017-03-08T06:58:21.139Z",
+      "updated_at": "2017-03-08T07:00:28.554Z"
+    }
+  }
+}
+
+35) Get all post of a particular user
+Url :- http://localhost:3000/api/v1/api_posts?authentication_token=SskCKDujwV_wAycxr4Li
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+    "success": true,
+    "info": "Posts",
+    "data": {
+        "post": [
+            {
+                "id": 357208,
+                "topic_id": 94374,
+                "forum_name": "Music",
+                "description": "api post test 3 comment 3",
+                "user_id": 17355,
+                "created_at": "2017-06-15T08:37:51.919Z",
+                "updated_at": "2017-06-15T08:37:51.919Z",
+                "state": "approved",
+                "video": null,
+                "image": null,
+                "media": null,
+                "username": "ashish1 ghate1",
+                "usertitle": "title",
+                "comment_count": 0,
+                "avatar": {
+                    "small": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/small_small.jpg?X-Amz-Expires=600&X-Amz-Date=20170712T095014Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170712/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c1bd5eb7e686e10a9f70ac79a36e0f0f395845b6963dd53a9248fbcebcaa5ec6",
+                    "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/thumb_small.jpg?X-Amz-Expires=600&X-Amz-Date=20170712T095014Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170712/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=be8417bc45a89b7737d17c15f3bb7374a1b612e5180e5fac37de6630683fe668",
+                    "large": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/large_small.jpg?X-Amz-Expires=600&X-Amz-Date=20170712T095014Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170712/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=826705fb0be6079312f30dd8be827d092669a3d7fd3cd1ec41fee26819c1f85f"
+                }
+            },
+            {
+                "id": 357207,
+                "topic_id": 94374,
+                "forum_name": "Music",
+                "description": "api post test 3 comment 2",
+                "user_id": 17355,
+                "created_at": "2017-06-15T08:26:26.848Z",
+                "updated_at": "2017-06-15T08:26:26.848Z",
+                "state": "approved",
+                "video": null,
+                "image": null,
+                "media": null,
+                "username": "ashish1 ghate1",
+                "usertitle": "title",
+                "comment_count": 0,
+                "avatar": {
+                    "small": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/small_small.jpg?X-Amz-Expires=600&X-Amz-Date=20170712T095014Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170712/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c1bd5eb7e686e10a9f70ac79a36e0f0f395845b6963dd53a9248fbcebcaa5ec6",
+                    "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/thumb_small.jpg?X-Amz-Expires=600&X-Amz-Date=20170712T095014Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170712/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=be8417bc45a89b7737d17c15f3bb7374a1b612e5180e5fac37de6630683fe668",
+                    "large": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/large_small.jpg?X-Amz-Expires=600&X-Amz-Date=20170712T095014Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170712/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=826705fb0be6079312f30dd8be827d092669a3d7fd3cd1ec41fee26819c1f85f"
+                }
+            }
+        ]
+    }
+}
+
+43) Get Board Topics
+Url :- http://localhost:3000/api/v1/board_group?authentication_token=SskCKDujwV_wAycxr4Li
+Method :- post
+data :- {
+    "board":
+  {
+      "group_id": 16,
+      "start":0,
+      "limit":10
+  }
+}
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+    "success": true,
+    "info": "Board topics",
+    "data": {
+        "board_topics": [
+            {
+                "id": 94374,
+                "forum_id": 17,
+                "user_id": 17355,
+                "description": "api post test 3",
+                "views_count": 8,
+                "created_at": "2017-06-15T05:58:31.402Z",
+                "updated_at": "2017-07-12T09:38:24.422Z",
+                "username": "ashish1 ghate1",
+                "usertitle": "title",
+                "posts_count": 4,
+                "avatar": {
+                    "small": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/small_small.jpg?X-Amz-Expires=600&X-Amz-Date=20170712T102145Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170712/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=e463c08b5cf5b411de9e0dc4b1bcb1fdc8e326b1d7e19bc337b52250f659f077",
+                    "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/thumb_small.jpg?X-Amz-Expires=600&X-Amz-Date=20170712T102145Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170712/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=3b02cbcb67b732080b0b8c1bf173430eeccc289417e27f3a9e6881290cf0b50f",
+                    "large": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/large_small.jpg?X-Amz-Expires=600&X-Amz-Date=20170712T102145Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170712/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=ff82acbce5418c47337b917a55f9e07a5fc572032b444cb31e0885c7643b743b"
+                }
+            },
+            {
+                "id": 94369,
+                "forum_id": 17,
+                "user_id": 17355,
+                "description": "api post test testing 2",
+                "views_count": 19,
+                "created_at": "2017-04-18T11:35:14.617Z",
+                "updated_at": "2017-06-15T09:11:01.461Z",
+                "username": "ashish1 ghate1",
+                "usertitle": "title",
+                "posts_count": 6,
+                "avatar": {
+                    "small": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/small_small.jpg?X-Amz-Expires=600&X-Amz-Date=20170712T102145Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170712/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=e463c08b5cf5b411de9e0dc4b1bcb1fdc8e326b1d7e19bc337b52250f659f077",
+                    "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/thumb_small.jpg?X-Amz-Expires=600&X-Amz-Date=20170712T102145Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170712/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=3b02cbcb67b732080b0b8c1bf173430eeccc289417e27f3a9e6881290cf0b50f",
+                    "large": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/large_small.jpg?X-Amz-Expires=600&X-Amz-Date=20170712T102145Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170712/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=ff82acbce5418c47337b917a55f9e07a5fc572032b444cb31e0885c7643b743b"
+                }
+            }
+        ]
+    }
+}
+
+
+53) Get my jobs
+Url :- http://localhost:3000/api/v1/jobs/my_jobs?authentication_token=UtCbLxYeR9TR-12qVYrT
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+    "success": true,
+    "info": "Jobs",
+    "data": {
+        "job": [
+            {
+                "id": 55,
+                "title": "Website, Ios and Android Developer",
+                "description": "Employee job descriptions are written statements that describe the duties, responsibilities, required qualifications, and reporting relationships of a particular job. They are based on objective information obtained through job analysis, an understanding of the competencies and skills required to accomplish needed tasks, and the needs of the organization to produce work.",
+                "avatar": {
+                    "small": "default-avatar.png",
+                    "thumb": "default-avatar.png",
+                    "large": "default-avatar.png"
+                },
+                "job_summery": "hhhhhhhhhh",
+                "summery_of_experience": "jjjjjjjjjjj",
+                "contact_email": "ashishghate5@gmail.com",
+                "user_id": 17355,
+                "created_at": "2017-03-15T17:04:24.030Z",
+                "updated_at": "2017-03-15T17:33:42.397Z"
+            }
+        ]
+    }
+}
+
+
+54) Show job
+Url :- http://localhost:3000/api/v1/jobs/58?authentication_token=UtCbLxYeR9TR-12qVYrT
+Method :- get
+Header :- Accept: application/json, 
+Content-Type: application/json
+Output :-
+{
+    "success": true,
+    "info": "Jobs",
+    "data": {
+        "job": [
+            {
+                "id": 55,
+                "title": "Website, Ios and Android Developer",
+                "description": "Employee job descriptions are written statements that describe the duties, responsibilities, required qualifications, and reporting relationships of a particular job. They are based on objective information obtained through job analysis, an understanding of the competencies and skills required to accomplish needed tasks, and the needs of the organization to produce work.",
+                "avatar": {
+                    "small": "default-avatar.png",
+                    "thumb": "default-avatar.png",
+                    "large": "default-avatar.png"
+                },
+                "job_summery": "hhhhhhhhhh",
+                "summery_of_experience": "jjjjjjjjjjj",
+                "contact_email": "ashishghate5@gmail.com",
+                "user_id": 17355,
+                "created_at": "2017-03-15T17:04:24.030Z",
+                "updated_at": "2017-03-15T17:33:42.397Z"
+            }
+        ]
+    }
+}
+
+55) Create Job
+Url :- http://localhost:3000/api/v1/jobs?authentication_token=qLDuxspupsv3triN6f-5
+Method :- Post
+Header :- Accept: application/json, 
+Content-Type: application/json
+Data :- 
+  { "job": { "title": "api job 3", "description" : "api job 3 description", "summery_of_experience" : "api job 3 summery", "contact_email": "ashishghate5@gmail.com", "image" : "", "job_plan_id":1 } }
+Output :-
+{
+    "success": true,
+    "info": "Job was successfully created.",
+    "data": {
+        "job": {
+            "id": 67,
+            "title": "api job 3",
+            "description": "api job 3 description",
+            "avatar": {
+                "small": "default-avatar.png",
+                "thumb": "default-avatar.png",
+                "large": "default-avatar.png"
+            },
+            "summery_of_experience": "api job 3 summery",
+            "contact_email": "ashishghate5@gmail.com",
+            "job_end_on": "2017-07-23",
+            "user_id": 17355,
+            "plan_id": "1",
+            "created_at": "2017-06-23T10:01:42.096Z",
+            "updated_at": "2017-06-23T10:01:42.677Z"
+        }
+    }
+}
+
+56) Update Job
+Url :- http://localhost:3000/api/v1/jobs/70?authentication_token=qLDuxspupsv3triN6f-5
+Method :- PUT
+Header :- Accept: application/json, 
+Content-Type: application/json
+Data :- 
+ { "job": { "title": "api job 6 update", "description" : "api job 6 description", "summery_of_experience" : "api job 6 summery", "contact_email": "ashishghate5@gmail.com", "image" : "", "job_plan_id":1 } }
+Output :-
+{
+    "success": true,
+    "info": "Job was successfully updated.",
+    "data": {
+        "job": {
+            "id": 70,
+            "title": "api job 6 update",
+            "description": "api job 6 description",
+            "avatar": {
+                "small": "default-avatar.png",
+                "thumb": "default-avatar.png",
+                "large": "default-avatar.png"
+            },
+            "skills": "api job 6 summery",
+            "contact_email": "ashishghate5@gmail.com",
+            "job_end_on": "2017-07-23",
+            "user_id": 17355,
+            "plan_id": "1",
+            "created_at": "2017-06-23T10:24:31.615Z",
+            "updated_at": "2017-06-23T11:23:57.686Z"
+        }
+    }
+}
+
+57) Create Event
+Url :- http://localhost:3000/api/v1/events?authentication_token=BFsnqB2f8MQgDrwuzP5p
+Method :- post
+Header :- Accept: application/json, 
+Content-Type: application/json
+Data => { "event": { "title": "16 auagust api event 1", "description": "description of 16 auagust api event 1","timeframe": "2017-08-17 6:25pm to 2017-08-17 6:25pm","location": "","video": "","web_url": "","video_url": "","image": "","address_attributes" : {"street":"api street ", "street2":"", "city":"indore", "state":"MP", "zip_code":"452001", "country":"India", "id":""} } }
+Output :- 
+{
+    "success": true,
+    "info": "Event",
+    "data": {
+        "event": {
+            "id": 262,
+            "eventable_id": 17355,
+            "eventable_type": "User",
+            "user_id": 17355,
+            "title": "16 auagust api event 1",
+            "description": "description of 16 auagust api event 1",
+            "start_at": "2017-08-17T18:25:00.000Z",
+            "end_at": "2017-08-17T18:25:00.000Z",
+            "location": "",
+            "slug": "16-auagust-api-event-1-18958c35-d280-4dd5-976f-a79a831b71b7",
+            "topic_id": 94380,
+            "priority": 50,
+            "web_url": "",
+            "event_avatars": [],
+            "author_name": "ashish1 ghate1",
+            "author_avatar": {
+                "original": "https://czardom.s3.amazonaws.com/uploads/user/image/17355/small.jpg?X-Amz-Expires=600&X-Amz-Date=20170816T170615Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170816/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=40596cb4d68afa34bb6b9461bc144c085bd995fb55d8184ce342c422d010d3a1"
+            },
+            "created_at": "2017-08-16T17:06:00.413Z",
+            "updated_at": "2017-08-16T17:06:03.826Z"
+        }
+    }
+}
+
+
+
+
+

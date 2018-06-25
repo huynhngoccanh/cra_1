@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        jobs /
+        <%= link_to "New job", new_job_path %>
+      </h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>User</th>
+        <th>Description</th>
+        <th>Skills</th>
+        <th>Contact Info</th>
+        <th>Image</th>
+        <th>Job End On</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @jobs.each do |job| %>
+        <tr >
+          <td>            
+            <%= job.title %>            
+          </td>
+          <td><%= job.user.full_name if job.user %></td>
+          <td>
+           <%= job.description%>
+          </td>
+          <td>
+           <%= job.summery_of_experience%>
+          </td>
+          <td>
+           <%= job.contact_email%>
+          </td>
+          <td>
+            <%= image_tag job.image.url, width: '100px', height: '100px' if job.image %>
+          </td>
+          <td>
+           <%= job.job_end_on%>
+          </td>
+          <td>
+            <%= link_to "Edit", edit_job_path(job) %> || <%= link_to "Delete", job_path(job), method: :delete, class: 'text-danger', 'data-confirm' => 'Are you sure?' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @jobs %>
+</div>

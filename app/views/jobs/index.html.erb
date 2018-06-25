@@ -1,0 +1,21 @@
+<% title "Jobs" %>
+
+<div class="profile-page">
+  <%= render "shared/flash_messages" %>
+
+  <div class='col-md-12 user-line'>
+    <h2 class="page-header">Jobs</h2>
+    <h4><STRONG><%= link_to "Post a job", new_job_path %> | 
+    <%= link_to "My jobs", my_jobs_jobs_path %></STRONG></h4>
+  </div>
+  <div class='col-md-9'>
+    <div class="discussion-list">
+      <ul class="parent list-unstyled">
+        <h1><%= 'No Job found' if @jobs.blank? %></h1>
+        <% @jobs.each do |job| %>
+          <%= render partial: "job", :locals => {:job => job} %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+version: '2'
+services:
+  web:
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh ./docker/web/start.sh
+    volumes:
+      - .:/var/www
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+      - elasticsearch
+    env_file: .env
+
+  db:
+    image: postgres
+    ports:
+      - "15432:5432"
+    volumes:
+      - ~/data/postgresql:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pipster_development
+
+  redis:
+    image: redis:3.2
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+      - ./docker/redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ~/data/redis.3.2:/data
+    ports:
+      - "16379:6379"
+
+  elasticsearch:
+    image: elasticsearch:1.7
+    command: elasticsearch -Des.http.cors.enabled=true
+    ports:
+      - "9200:9200"

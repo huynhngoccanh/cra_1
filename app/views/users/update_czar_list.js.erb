@@ -1,0 +1,2 @@
+$("#czars_list").html("<%= escape_javascript (render partial: 'shared/follower_list', locals: {users: @users}) %>");
+$('#loader').hide();

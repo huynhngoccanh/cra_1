@@ -1,0 +1,31 @@
+<h2>Payment Methods</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Type</th>
+      <th>Card Number</th>
+      <th>Country</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cards.each do |card| %>
+      <tr>
+        <td><%= card.id %></td>
+        <td><%= card.brand %></td>
+        <td><%= card.last4 %></td>
+        <td><%= card.country %></td>
+        <td>
+            <%= link_to card_path(id: card.id), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?' do %>
+              <i class='fa fa-times'></i></i>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New payment method', '#', 'data-toggle' => 'modal', 'data-target' => '#new-card-modal', class: 'btn btn-primary' %>
+<%= render 'new_card_modal' %>

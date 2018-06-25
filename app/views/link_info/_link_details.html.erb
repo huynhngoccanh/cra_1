@@ -1,0 +1,15 @@
+<% if @data %>
+  <div class="row-thumb">
+    <div class = "col-sm-6 col-md-4 " id = "div_thumb_1">
+      <a href ="<%=@data.url.to_s%>" class = "thumbnail1-img">
+        <%= image_tag @data.images.first.src.to_s if @data.images.first%>
+      </a>
+    </div>
+    <div class = "col-sm-6 col-md-8" id = "div_thumb_2">
+      <p style="padding: 15px;"><b><%= @data.title%></b></p>
+      <a href ="<%=@data.url.to_s%>" class = "thumbnail1-content">
+        <%= @data.description %>
+      </a>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,12 @@
+<% title t('profile_videos.new') %>
+
+<div class="profile-page">
+  <%= render "shared/flash_messages" %>
+
+  <h2 class="page-header">
+    <%= link_to "Your Profile", main_app.user_path(current_user) %>
+    <%= page_title(prepend: '/') %>
+  </h2>
+
+  <%= render "form" %>
+</div>

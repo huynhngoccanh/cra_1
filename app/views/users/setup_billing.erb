@@ -1,0 +1,19 @@
+<div class="col-md-3"></div>
+<div class="col-md-7 subscription_head">
+<h2>Subscription</h2>
+  
+  <div class="col-md-3 subscription_plan">
+    <p>MONTHLY</p>
+    <div class="subscription_details">
+      <div class="sub_amount">
+        <sup>$</sup>
+        <span><%= @plan.amount / 100 if @plan.amount %></span>
+        <sub>/ mo</sub>
+      </div>
+    </div>
+    <div class="subcription_btn">
+      <%= link_to "Go Monthly", make_payment_path(params[:token], id: (@plan.plan_id))%>
+    </div>
+  </div>
+
+</div>

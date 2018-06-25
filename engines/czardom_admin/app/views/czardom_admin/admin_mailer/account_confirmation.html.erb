@@ -1,0 +1,18 @@
+<% if @status == "Approve" %>
+  <p>Wecome to Czardom!</p>
+
+  <p>You're getting this email because your account is approved.</p>
+
+  <p>Please click on the link below to verify the address and start enjoying the entire CZARDOM platform.</p>
+
+  <!-- <p><%#= link_to 'Confirm my account', confirm_account_path(@user.account_confirm_token) %></p> -->
+
+  <a href="<%= @host %>/confirm_account/<%= @token%>"> Confirm Account</a>
+
+  <p>Thanks!</p>
+
+  <p>If you didn't sign up for CZARDOM,please ignore this email. </p>
+<% elsif @status == "Decline" %>
+   <p>You're getting this email because your account is decline by Admin.</p>
+   <p>Contact the Admin!</p>
+<% end %>

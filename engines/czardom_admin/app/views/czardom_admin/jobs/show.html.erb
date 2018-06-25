@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        <%= link_to "jobs", jobs_path %> /
+        <% if can? :edit, @job %>
+          / <%= link_to "Edit job", edit_job_path(@job) %>
+        <% end %>
+      </h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="content-box">
+  <div class="box-header">
+    <h4 class="box-title">
+      Stats Overview
+    </h4>
+  </div>
+
+
+  <div class="box-content">
+    <div class="row">
+      <div class="col-md-3">
+        <dl>
+          <dt>Number of Members</dt>
+          <dd><%= @job.users.count, 'member' %></dd>
+  
+          <dt>Creator</dt>
+          <% if @job.owner != nil %>
+            <dd><%= link_to @job.owner.full_name, @job.owner %></dd>
+          <% end %>
+        </dl>
+      </div>
+  
+      <div class="col-md-5">
+        <% if @job.forum.present? %>
+          <h3>Board Details</h3>
+          <%= link_to 'View Board', forem.forum_path(@job.forum), class: 'btn btn-primary' %>
+  
+          <dl>
+            <dt>Number of Topics</dt>
+            <dd><%= pluralize @job.forum.topics.count, 'topics' %></dd>
+          </dl>
+  
+          </dl>
+        <% else %>
+          <h3>This job doesn't have a board</h4>
+          <%= link_to 'Add a Board Now', create_board_job_path(@job), class: 'btn btn-primary', method: :job %>
+        <% end %>
+      </div>
+    </div>
+    
+    <!-- SPONSOR LOGO -->
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Sponsor Logo</h3>    
+      </div>
+      
+
+    </div>
+  </div>
+</div>

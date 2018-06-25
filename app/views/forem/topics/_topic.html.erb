@@ -1,0 +1,118 @@
+<% relevant_post_count = relevant_posts(topic).count - 1 %>
+<li data-id="<%= topic.id %>">
+  <div class="discussion-summary">
+    <div class="col-xs-6 col-xs-offset-3 col-sm-2 col-sm-offset-0 col-md-2 author">
+      <span class='crows sm-icons'><%= raw generate_crown(topic.user) %></span>
+      <%= link_to main_app.user_path(topic.user) do %>
+        <%= avatar_tag topic.user, size: :large %>
+      <% end %>
+      <%= render partial: "shared/followable", locals: {user: topic.user} %>
+    </div>
+
+    <div class='col-xs-10 col-sm-7 col-md-7 main'>
+      <h3 class="title">
+        <%= link_to forem.forum_topic_path(topic.forum, topic) do %>
+          <%= topic.subject %>
+        <% end %>
+      </h3>
+      <ul class="info list-unstyled">
+        <li class="item-tags">
+          <a href='#' class="like" data-id='<%= topic.id %>'>
+            <%= image_tag 'icons/like.svg', width: 20 %>
+            <span class='badge'><%= Vote.where(votable: topic).count %></span>
+          </a>
+        </li>
+
+        <li class="item-tags">
+          <a href= <%="/board/" + topic.forum.slug%>><span class="badge badge-default"><%= topic.forum.title %></span></a>
+        </li>
+
+        <li class="item-meta">
+          <strong><%= topic.user.forem_name %></strong>
+          posted
+          <%= time_ago_in_words topic.created_at %> ago
+        </li>
+      </ul>
+      <%
+        @data = make_image_link(topic.subject) unless topic.subject.blank?
+      %>
+
+      <div class='clearfix'></div>
+      <div class='post-replies top-posts'>
+        <% @posts = topic.posts.where(reply_to: nil).order(created_at: :desc).limit(4) %>
+        <div class='items'>
+          <% @posts.each.with_index do |post, index| %>
+            <% if index > 0 %>
+              <% user = post.forem_user %>
+              <% info = to_user_hash(user) %>
+
+              <div class="item row">
+                <aside class="post-author col-md-2">
+                  <span class='crows x-sm-icons'><%= raw(generate_crown(user)) %></span>
+                  <img class="user-avatar" src="<%= info[:avatar][:small] %>" />
+
+                  <% if info[:charter_member] %>
+                    <div>
+                      <span class="badge badge-success"><i class="fa fa-star"></i> Charter </br>Czar</span>
+                    </div>
+                  <% end %>
+                </aside>
+
+                <article class="post col-md-10">
+                  <header class="post-header">
+                    <ul class="info list-unstyled">
+                      <li class="item-user">
+                        <h3>
+                          <span>
+                            <a href='/users/<%= info[:id] %>'><%= info[:full_name] %></a>
+                          </span>
+                        </h3>
+                      </li>
+                      <li class="item-meta">
+                        <span class='created-at'><%= post.created_at %></span>
+                      </li>
+                    </ul>
+                  </header>
+                  <div class='clearfix'></div>
+                  <div class="post-body"><%= raw post.text %></div>
+                  <div class="post-reply clearfix">
+                    <!-- <a href="#" data-id="<%= post.id %>" class="reply-me">Reply</a> -->
+                    <a href="#" data-id="<%= post.id %>" class="like-me">
+                      <%= image_tag 'icons/like.svg', width: 20 %>
+                      <span class='badge'><%= Vote.where(votable: post).count %></span>
+                    </a>
+                  </div>
+                </article>
+              </div>
+
+              <div class="reply-post-text" id="reply-<%= post.id %>">
+                <form action="<%= post.reply_url %>" id="form-<%= post.id %>" method="post" data-method="post" data-remote="true" data-type="json" class="reply-form">
+                  <input type="hidden" name="post[reply_to_id]" value="<%= post.id %>">
+                  <textarea class="text required field form-control" rows="2" required="required" aria-required="true" name="post[text]" id="post_text" maxlength="500"></textarea>
+                  <input type="submit" name="commit" value="Post reply" class="btn btn-primary btn-sm pull-right" style="margin-top:3px;">
+                </form>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <% if relevant_post_count > 0 %>
+          <%= link_to 'View all', forem.forum_topic_path(topic.forum, topic) %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-xs-2 col-sm-2 col-md-2 count">
+      <%= link_to forem.forum_topic_path(topic.forum, topic), class: 'main' do %>
+        <div class="number-reply">
+          <%= relevant_post_count %>
+          <span class="count-label"><%= 'reply'.pluralize(relevant_post_count) %></span>
+        </div>
+      <% end %>
+    </div>
+
+    <%= render partial: '/link_info/link_details'%>
+
+  </div>
+</li>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>

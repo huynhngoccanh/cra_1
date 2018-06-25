@@ -1,0 +1,46 @@
+$btn-primary-bg: #59ABDA;
+$component-active-bg: $btn-primary-bg;
+
+$link-color: #59ABDA;
+$link-hover-color: $link-color;
+
+$navbar-default-bg: #625B54;
+$navbar-default-link-color: #d1c2b3;
+$navbar-default-link-hover-color: #fff;
+
+$navbar-default-link-active-color: #fff;
+$navbar-default-link-active-bg: transparent;
+
+$dropdown-link-active-bg: $btn-primary-bg;
+
+$badge-bg: $btn-primary-bg;
+
+@mixin MerriweatherSans($fontWeight: 400) {
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: $fontWeight;
+}
+
+.thumbnail1 {
+    background-color: white;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    display: block;
+    line-height: 1.42857;
+    margin-bottom: 20px;
+    padding: 4px;
+    transition: border 0.2s ease-in-out 0s;
+}
+.thumbnail1 > img, .thumbnail1 a > img {
+    display: block;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 53%;
+}
+.thumbnail1 .caption {
+    color: #333333;
+    padding: 9px;
+}
+a.thumbnail1:hover, a.thumbnail1:focus, a.thumbnail1.active {
+    border-color: #59abda;
+}

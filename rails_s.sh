@@ -1,0 +1,1 @@
+docker-compose up -d && docker attach czardomcom_web_1

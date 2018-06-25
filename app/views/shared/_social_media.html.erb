@@ -1,0 +1,26 @@
+<li>
+	<%= link_to '<img src="https://en.facebookbrand.com/wp-content/uploads/2016/05/FB-fLogo-Blue-broadcast-2.png" width="48px" />'.html_safe, 'https://www.facebook.com/groups/171303432941423', title: 'Czardom on Facebook' %>
+	<%= link_to '<img src="https://g.twimg.com/dev/documentation/image/Twitter_logo_blue_48.png" width="48px" />'.html_safe, 'http://Twitter.com/theprczar', title: 'Czardom on Twitter' %>
+	<%#= link_to '<img src="/assets/images/icon-instagram-48.png" width="48px"/>'.html_safe, ' http://Instagram.com/czardomczar', title: 'Czardom on Instagram' %>
+  <%= link_to href: 'http://Instagram.com/czardomczar' do %>
+    <%= image_tag 'icon-instagram-48.png', width: 48, height: 40, title: 'Czardom on Instagram'%>
+	<% end %> 
+</li>
+<br>
+<li>
+	<h3 class="">FEATURED GROUPS</h3>
+	<div class="group-listing group-selection clearfix social-div">
+		<% Group.sticky.where("name IN (?)", Group::SOCIAL_GROUP).each do |group| %>
+		  <div class="col-xs-6 col-md-12 group" data-group-name="<%=group.name.downcase%>">
+		    <%= link_to forem.forum_path(group.forum_id) do %>
+			    <label class="clearfix" for="<%= dom_id(group) %>">
+			      <%= image_tag group.image_url(:small), class: 'group-image', alt: group.name %>
+			      <%= group.name %><br />
+			      <span class="text-muted"><%= pluralize group.users.count, 'member' %></span>
+			      <%= icon('check') %>
+			    </label>
+			   <% end %>
+		  </div>
+		<% end %>
+	</div>
+</li>

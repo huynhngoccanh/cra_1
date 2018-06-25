@@ -1,0 +1,209 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+
+  });
+</script>
+
+<script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
+
+<div class="col-md-12">
+  <%= form_tag main_app.board_path do |f| %>
+    <div class="form-group">
+      <h3>Post</h3>
+      <%#= label_tag :body, 'Post' %>
+      <%= text_area_tag :body, nil, class: 'form-control', noresize: true, rows: 8, maxlength: 500 %>
+    </div>
+    <div class = "row" id="link_thumb">
+     
+    </div>
+    <%= hidden_field_tag(:media_url, '')%>
+        
+       <%#= select_tag "whatever", options_for_select([ "VISA", "MasterCard" ], "MasterCard") %>
+
+    <div class="form-group">
+      
+      <% if @group != nil %>
+         <%= hidden_field_tag :location, @group.name %>
+      <% else %>
+        <%= label_tag :location, 'Select the board to post' %>
+        <% current_user.groups.each do |group| %>
+          <% unless group.forum_id.nil? then (@group_slug ||= []) << group.name end %>
+        <% end %>
+  
+        <%= select_tag 'location', options_for_select(@group_slug),:style => "width: 200px; margin-left:20px",:id => "dropdown" %>
+        <%#= select_tag 'location', options_for_select(@group_slug),:style => "width: 200px; margin-left:20px",:class => "dropdown-toggle" %>
+      <% end %>
+    </div>
+    <div class="form-group">
+       <%= hidden_field_tag :media%>
+   
+    </div>
+    
+
+    <div class="form-group">
+        
+        <%= label_tag :tagged_users, 'Tag to Friends' %>
+         <%#= select_tag 'tagged_users', options_for_select(@followers),:style => "width: 200px; margin-left:20px",:id => "dropdown" %>
+        <%= select_tag :tagged_users, options_for_select(current_user.following_users.collect{|p| [p.full_name.downcase, p.id]}), {:multiple => true, :class => "chzn-select", :style => "width:400px;", :id => "boot-multiselect-demo" }%> 
+    </div>
+    
+      <br>
+      <%#= image_tag("upload-image-button.png", id: "upload-button-article" )%>
+      <%= image_tag ("upload-image-btn.png"), :class => "upload-button-article" %>
+    
+      <!--<a href="#" id="upload-button-article">Upload multiple images</a>-->
+      <div class="row">
+        <div class="col-md-4 col-sm-3">
+          <%= image_tag 'logo.png', id: 'image-thumb-article-1',class:' thumb-view thumbnail img-responsive' %>
+        </div>
+         <div class="col-md-4 col-sm-3">
+          <%= image_tag 'logo.png',id:'image-thumb-article-2',class: 'thumb-view thumbnail img-responsive' %>
+        </div>
+         <div class="col-md-4 col-sm-3">       
+          <%= image_tag 'logo.png',id:'image-thumb-article-3',class: 'thumb-view thumbnail img-responsive' %>
+        </div>
+         <div class="col-md-4 col-sm-3">     
+          <%= image_tag 'logo.png',id:'image-thumb-article-4',class: 'thumb-view thumbnail img-responsive'%>
+         </div>
+        </div>
+        <div class="col-md-4 col-sm-3">
+          <%= video_tag '',id:'video-thumb-article',width: 200, height: 150, controls: true %>
+        </div>
+      </div>
+   
+  <% end %>
+  <div class="form-actions clearfix">
+    <div class="pull-right">
+      <%= submit_tag "Post a story", class: 'btn btn-primary pull-right' %>
+    </div>
+  </div>
+</div>
+<style>
+  
+  .thumb-view {
+    margin : 20px;
+   
+  }
+</style>
+
+
+<script type="text/javascript">
+// <!--$(function() {     -->
+
+    var image_thumb_article = [];
+    var avaliable_article_ids = [0,1,2,3];
+    var upload_button_article = document.getElementsByClassName("upload-button-article")[0];
+    
+    var collected_media_article = document.getElementById("media");
+    var collected_article_url = {};
+    
+    image_thumb_article[0] = document.getElementById("image-thumb-article-1");
+    image_thumb_article[1] = document.getElementById("image-thumb-article-2");
+    image_thumb_article[2] = document.getElementById("image-thumb-article-3");
+    image_thumb_article[3] = document.getElementById("image-thumb-article-4");
+    var video_thumb_article = document.getElementById("video-thumb-article");   
+ 
+     for(i = 0; i < 4; i++) {
+       image_thumb_article[i].style.display = 'none';
+     }
+     video_thumb_article.style.display = 'none';
+    var index = 0;
+    if(collected_media_article){
+      if (collected_media_article.value){
+        
+  
+        var url_object = JSON.parse(collected_media_article.value);
+       
+          for(var i in url_object) {
+            
+            if (url_object.hasOwnProperty(i)) {
+              
+                if ((url_object[i].url.indexOf(".jpg") > -1) || (url_object[i].url.indexOf(".png") > -1)) {
+               
+                  image_thumb_article[index].src =  url_object[i].thumb_url;
+                  index ++;
+                } else {
+                  video_thumb_article.src = url_object[i].url;
+                  video_thumb_article.style.display = 'inline';
+                }
+              }
+          }
+      }
+    }
+
+    
+    <!--// for(var i = index; i < 4; i++){-->
+    <!--//   image_thumb_article[i].style.display = "none";-->
+    <!--// }-->
+   
+
+    upload_button_article.addEventListener("click", function() {
+          if(avaliable_article_ids.length == 0){
+              window.alert("Sorry,You have exceeded your max attach limit");
+          } else {
+         
+            cloudinary.openUploadWidget({ cloud_name: 'hqps4ipsj', cropping : 'server', multiple: true,  upload_preset: 'czardom',return_delete_token:true}, 
+              function(error, result) {
+                if(!error){
+                  
+                  if(avaliable_article_ids.length > 0){
+                    
+                    if(result[0].resource_type == "video") {
+                     
+                      video_thumb_article.src = result[0].url;
+                      video_thumb_article.style.display = 'inline';
+                      collected_article_url["4"] = {
+                        url : result[0].url,
+                        thumb_url: result[0].url
+                      };        
+                       video_thumb_article.addEventListener('dblclick', function(){ 
+                        
+                        // remove item
+                        video_thumb_article.src = null;
+                        video_thumb_article.style.display = "none";
+                        delete collected_article_url["4"];
+                        collected_media_article.value = JSON.stringify(collected_article_url);
+                        
+                      });
+                    } else {
+                      var index = avaliable_article_ids[0];
+                      image_thumb_article[index].src = result[0].thumbnail_url;
+                      image_thumb_article[index].style.display = 'inline';
+                      
+                      image_thumb_article[index].addEventListener('dblclick', function(){ 
+
+                        delete collected_article_url[index];
+                        avaliable_article_ids.unshift(index);
+                      
+                        collected_media_article.value = JSON.stringify(collected_article_url);
+                        image_thumb_article[index].src = null;
+                        image_thumb_article[index].style.display = "none";
+                      });
+                      
+                      collected_article_url[index] = {
+                        url : result[0].url,
+                        thumb_url: result[0].thumbnail_url
+                      };
+                      avaliable_article_ids.shift();
+                      
+                    //  window.alert(collected_media_article.value);
+                    }
+                    
+                    
+                   collected_media_article.value = JSON.stringify(collected_article_url);
+                  } else {
+                    window.alert("max attach limit excceded");
+                  }
+                }
+              });     
+          }
+      }, false);     
+// <!--});-->
+
+
+    $('#boot-multiselect-demo').multiselect({
+      includeSelectAllOption: true,
+      buttonWidth: 400,
+      enableFiltering: true
+    });
+</script>

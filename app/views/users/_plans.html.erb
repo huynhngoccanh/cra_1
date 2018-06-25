@@ -1,0 +1,78 @@
+<div class="form-group subscription_head">
+<h2>Subscription</h2>
+  
+  <div class="col-md-3 subscription_plan">
+    <p>MONTHLY</p>
+    <div class="subscription_details">
+      <div class="sub_amount">
+        <sup>$</sup>
+        <span><%= @plan.amount / 100 if @plan.amount %></span>
+        <sub>/ mo</sub>
+      </div>
+    </div>
+    <div class="subcription_btn">
+      <%#= link_to "Go Monthly", make_payment_path(params[:token], id: (@plan.plan_id))%>
+    </div>
+  </div>
+
+</div>
+<script type="text/javascript">
+  $(window).on('load',function(){
+        $('#myModal').modal('show');
+  });
+</script>
+
+
+<style type="text/css">
+  .col-md-7.subscription_head h2 {
+    text-align: center;
+  }
+  .col-md-3.subscription_plan {
+    height: 220px;
+    margin-top: 5%;
+  }
+  .subscription_details div {
+    margin-top: 40px;
+    margin-bottom:  40px;
+    text-align: center;
+  }
+  .col-md-3.subscription_plan p {
+    text-align: center;
+    padding-top: 10px;
+    font-weight: bold;
+    color: #bfbfbf;
+  }
+  .col-md-3.subscription_plan {
+    /*border: 1px solid gray;*/
+    border: 1px solid #bfbfbf;
+    box-shadow: 5px 10px #d9d9d9;
+  }
+  .subcription_btn {
+    text-align: center;
+    background-color: green;
+    padding: 10px;
+    color: #fff;
+    font-size: 17px;
+    font-weight: bold;
+  }
+  .subcription_btn a{
+    color: #fff;
+  }
+  .sub_amount span {
+    font-size: 40px;
+    font-weight: bold;
+  }
+  .sub_amount sub {
+    font-size: 15px;
+    font-weight: bold;
+    color: gray;
+  }
+  .sub_amount sup {
+    font-size: 15px;
+    font-weight: bold;
+    color: gray;
+  }
+  /*.subscription_details {
+    height: 150px;
+  }*/
+</style>

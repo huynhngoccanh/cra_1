@@ -1,0 +1,148 @@
+<%= render :partial => 'forem/forums/head', :locals => { :forum => @forum } %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= link_to "Post to board", "#", class: "btn btn-primary btn-block btn-lg", id: "new-topic", "data-toggle": "modal" , "data-target": "#post-topic" %>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="post-topic">
+      <%= form_tag main_app.board_path do |f| %>
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">New Post</h4>
+            </div>
+            <div class="modal-body form-group">
+              <%= render 'shared/body_new_post_board' %>
+            <div class="modal-footer">
+
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      <% end %>
+    </div><!-- /.modal -->
+  <!--</div>-->
+</div>
+   </div>
+</div>
+<div class="row">&nbsp;</div>
+<div class="row">
+  <%= render 'boards/sidebar' %>
+  <div id="generate-add-form">
+    <!-- <img class="img-responsive" src="/img/Loading_icon.gif" style="padding-right:10%"/> -->
+
+  </div>
+
+  <div class="col-md-12">
+    <!-- Collapsible -->
+    <div class="panel-group" id="czardom-board-show" role="tablist" aria-multiselectable="true">
+      <!-- Part 2, topics of boards -->
+      <div class="panel panel-default">
+        <% if(@group != nil) %>
+        <div class="panel-heading" role="tab" id="czardom-board-show-posts-heading">
+          <h4 class="panel-title">
+            <a id="czardom-board-show-posts-heading-id" class="collapsed" role="button" data-toggle="collapse" data-parent="#czardom-board-show" href="#czardom-board-show-posts" aria-expanded="true" aria-controls="czardom-board-show-posts">
+              Board topics
+            </a>
+          </h4>
+        </div>
+
+        <div id="czardom-board-show-posts" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="czardom-board-show-posts-heading">
+        <% end %>
+          <div class="panel-body">
+            <div class="discussion-list">
+              <ul class="parent list-unstyled">
+                <%= render partial: "forem/topics/topic", collection: @topics, as: :topic %>
+              </ul>
+            </div>
+
+            <%= forem_pages_widget(@topics) %>
+          </div>
+        <% if(@group != nil) %>
+        </div>
+        <% end %>
+      </div>
+      <!-- Part I, users of boards -->
+      <% if(@group != nil) %>
+      <div class="panel panel-default">
+
+        <div class="panel-heading" role="tab" id="czardom-board-show-users-heading">
+          <h4 class="panel-title">
+            <a id="czardom-board-show-users-heading-id" role="button" data-toggle="collapse" data-parent="#czardom-board-show" href="#czardom-board-show-users" aria-expanded="false" aria-controls="czardom-board-show-users">
+              Board users
+            </a>
+          </h4>
+        </div> <!-- End heading -->
+
+        <div id="czardom-board-show-users" class="panel-collapse collapse" role="tabpanel" aria-labelledby="czardom-board-show-users-heading">
+          <div class="panel-body">
+            <div class="row">
+              <% users = @group.users.page(params[:board_user_page]).per(5) %>
+              <%= render partial: "forem/forums/group_user_list", :locals => { :users => users } %>
+            </div>
+          </div>
+        </div> <!-- End czardom-board-show-users -->
+      </div><!-- End collapse part 2 -->
+      <% end %>
+    </div> <!-- End collapse -->
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('#body').on('input propertychange', function() {
+    val = $(this).val();
+    $.ajax({
+      url: '/link_info/index',
+      data: { url: val },
+      method: 'POST'
+    });
+  });
+
+  $("body").on("click", ".like", function(e) {
+    e.preventDefault();
+    var element = this;
+    var topic_id = $(this).data('id');
+    $.post("/likes", { type: 'Forem::Topic', id: topic_id }, function(data){
+      $(element).find('.badge').html(data.likes)
+    })
+  });
+
+  $('#userNumberCircles').click(function() {
+    var postsHeader =  $("#czardom-board-show-posts-heading-id");
+    var usersHeader =  $("#czardom-board-show-users-heading-id");
+    console.log(postsHeader.attr( "aria-expanded" ));
+    if(postsHeader.attr( "aria-expanded" )){
+      postsHeader.click();
+    }
+    if(usersHeader.attr( "aria-expanded" )){
+       usersHeader.click();
+    }
+  });
+
+  $('.created-at').each(function(i, e){
+    $(e).html(moment($(e).html()).calendar());
+  })
+
+  function handleReplyClick() {
+    $("body").on("click", ".reply-me", function(e) {
+      e.preventDefault();
+      var post_id = $(e.target).attr('data-id');
+      $("#reply-"+post_id).toggle();
+    });
+
+    $("body").on("click", ".like-me", function(e) {
+      e.preventDefault();
+      var element = this;
+      var post_id = $(this).data('id');
+      $.post("/likes", { type: 'Forem::Post', id: post_id }, function(data){
+        $(element).find('.badge').html(data.likes)
+      })
+    });
+  }
+
+  handleReplyClick();
+
+  $("body").on("click", "#reply-topic-button", function(e) {
+    e.preventDefault();
+    $(".reply-topic-form").toggle();
+  });
+
+</script>

@@ -1,0 +1,319 @@
+20) Post Show
+url : https://staging-czardom.herokuapp.com/api/v1/api_posts/386422?authentication_token=iUraA6uzCh8s6qThj31H
+method : get
+o/p : 
+{
+    "success": true,
+    "info": "Post",
+    "data": {
+        "post": {
+            "id": 386422,
+            "topic_id": 101677,
+            "forum_name": "Cannes",
+            "description": "Hi - looking for a dress for an A list actress for AMFAR tonight.  Luggage was lost!!!\nSize 0\nAny leads helpful.",
+            "user_id": 2208,
+            "created_at": "2017-05-25T07:55:51.508Z",
+            "updated_at": "2017-05-25T07:55:51.508Z",
+            "state": "approved",
+            "video": null,
+            "image": null,
+            "media": null,
+            "username": "Jim Mannino",
+            "usertitle": null,
+            "avatar": {
+                "small": "https://czardom.s3.amazonaws.com/uploads/user/image/2208/small_923469_10152204194891405_1115431982_n.jpg?X-Amz-Expires=600&X-Amz-Date=20170620T155126Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c311ae338edc7e391dc260b8c5578b71471a28ceca4a390e94d8f1c5fa8a9fdc",
+                "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/2208/thumb_923469_10152204194891405_1115431982_n.jpg?X-Amz-Expires=600&X-Amz-Date=20170620T155126Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=5b29551f07df1d67a6d3a8871df9f9a0485c97be79bc608aaf2ddbb2e263de2b",
+                "large": "https://czardom.s3.amazonaws.com/uploads/user/image/2208/large_923469_10152204194891405_1115431982_n.jpg?X-Amz-Expires=600&X-Amz-Date=20170620T155126Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=df8bad2b18db6b1ab35df64c11fce3b94c4e12e83f91a06b7810132ffa9e5fef"
+            }
+        }
+    }
+}
+
+
+21) Create new post
+Url :- https://staging-czardom.herokuapp.com/api/v1/api_posts?authentication_token=RwEW5zQ34cdboAxzuX5M
+Method :- Post
+Header :- Accept: application/json, 
+Content-Type: application/json
+Data :- 
+  { "post": { "body": "music group post testing", "forum_id": 17} }
+Output :-
+  {
+    "success": true,
+    "info": "Posts created",
+    "data": {
+        "posts": [
+            {
+                "id": 389337,
+                "topic_id": 102502,
+                "description": "music group post testing",
+                "user_id": 10075,
+                "created_at": "Thu 06/15/17",
+                "updated_at": "Thu 06/15/17",
+                "state": "approved",
+                "video": null,
+                "image": null,
+                "media": null,
+                "username": "David ming",
+                "usertitle": "Senior marketing expert",
+                "avatar": {
+                    "small": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/small_file.png?X-Amz-Expires=600&X-Amz-Date=20170615T062633Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170615/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=2b6d67c169fc7fc6e7f551815452c20b6561cba5b02cc6568e3c654b8346c81f",
+                    "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/thumb_file.png?X-Amz-Expires=600&X-Amz-Date=20170615T062633Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170615/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=a4379b84db449e9b0b8424f97c30880b20ca35f911ad326b12cae5df660681e7",
+                    "large": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/large_file.png?X-Amz-Expires=600&X-Amz-Date=20170615T062633Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170615/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=0595895f4708ea8e2e67d25fc2bad1dc1ffb30e725be908e5242750648f6e7ef"
+                }
+            }
+        ]
+    }
+}
+
+22) Comment on post
+Url :- https://staging-czardom.herokuapp.com/api/v1/post_rply?authentication_token=RwEW5zQ34cdboAxzuX5M
+Method :- Post
+Header :- Accept: application/json, 
+Content-Type: application/json
+Data :- 
+  { "post": { "body": "music group post testing comment 1", "reply_to_id": 389337,"topic_id" : 102502 } }
+Output :-
+  {
+    "success": true,
+    "info": "Comment created",
+    "data": {
+        "comment": {
+            "id": 389338,
+            "topic_id": 102502,
+            "description": "music group post testing comment 1",
+            "user_id": 10075,
+            "created_at": "Thu 06/15/17",
+            "updated_at": "Thu 06/15/17",
+            "state": "approved",
+            "video": null,
+            "image": null,
+            "media": null,
+            "username": "David ming",
+            "user_title": "Senior marketing expert",
+            "user_avatar": {
+                "small": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/small_file.png?X-Amz-Expires=600&X-Amz-Date=20170615T063553Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170615/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=48bec2b4ddb5a8344072f3d67cfa69fedffd0b2292886db7ec6b43ee0031c6b9",
+                "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/thumb_file.png?X-Amz-Expires=600&X-Amz-Date=20170615T063553Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170615/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=8970dac5ab47e78381a2f824db8c08e0dd876b5e3fe5062ea288875cc365a0c8",
+                "large": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/large_file.png?X-Amz-Expires=600&X-Amz-Date=20170615T063553Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170615/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=675408a9bedebd34cd90e636c25a197780d204a649272f647f60c90dc7e01544"
+            }
+        }
+    }
+}
+
+35) Get all post of a particular user
+url : https://staging-czardom.herokuapp.com/api/v1/api_posts?authentication_token=iUraA6uzCh8s6qThj31H
+method : get
+o/p : 
+{
+  "success": true,
+  "info": "Posts",
+  "data": {
+    "post": [
+      {
+                "id": 389354,
+                "topic_id": 102512,
+                "forum_name": "Chicago Czars",
+                "description": "Here is a test\nF\n",
+                "user_id": 10075,
+                "created_at": "2017-06-18T07:45:51.419Z",
+                "updated_at": "2017-06-18T07:45:51.419Z",
+                "state": "approved",
+                "video": null,
+                "image": null,
+                "media": null,
+                "username": "David ming",
+                "usertitle": "Senior marketing expert",
+                "avatar": {
+                    "small": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/small_file.png?X-Amz-Expires=600&X-Amz-Date=20170620T153843Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=04ec14e2fda982230ca6c111c461eee88b2e240feb424ffb384558a61361877f",
+                    "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/thumb_file.png?X-Amz-Expires=600&X-Amz-Date=20170620T153843Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=45204283fa948054726274ff2b779a4e8a32bc4cb643e74ff580bacb555c49d9",
+                    "large": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/large_file.png?X-Amz-Expires=600&X-Amz-Date=20170620T153843Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=48a4ce3eebc7794733912169f922d5abd8322154059a8680bb7fc0dd3db5db0d"
+                }
+            },
+            {
+                "id": 389353,
+                "topic_id": 102511,
+                "forum_name": "Chicago Czars",
+                "description": "Adsfasdfsdfds",
+                "user_id": 10075,
+                "created_at": "2017-06-15T10:47:11.192Z",
+                "updated_at": "2017-06-15T10:47:11.192Z",
+                "state": "approved",
+                "video": null,
+                "image": null,
+                "media": null,
+                "username": "David ming",
+                "usertitle": "Senior marketing expert",
+                "avatar": {
+                    "small": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/small_file.png?X-Amz-Expires=600&X-Amz-Date=20170620T153843Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=04ec14e2fda982230ca6c111c461eee88b2e240feb424ffb384558a61361877f",
+                    "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/thumb_file.png?X-Amz-Expires=600&X-Amz-Date=20170620T153843Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=45204283fa948054726274ff2b779a4e8a32bc4cb643e74ff580bacb555c49d9",
+                    "large": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/large_file.png?X-Amz-Expires=600&X-Amz-Date=20170620T153843Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=48a4ce3eebc7794733912169f922d5abd8322154059a8680bb7fc0dd3db5db0d"
+                }
+            }
+ 
+     ]
+    }
+   }
+
+
+36) Get all comments of a particular post
+url : https://staging-czardom.herokuapp.com/api/v1/get_comments/389337?authentication_token=iUraA6uzCh8s6qThj31H
+method : get
+o/p : 
+{
+    "success": true,
+    "info": "Comments",
+    "data": {
+        "comments": [
+            {
+                "id": 389348,
+                "topic_id": 102502,
+                "forum_name": "Music",
+                "description": "comment6",
+                "user_id": 10075,
+                "created_at": "2017-06-15T08:24:09.643Z",
+                "updated_at": "2017-06-15T08:24:09.643Z",
+                "state": "approved",
+                "video": null,
+                "image": null,
+                "media": null,
+                "username": "David ming",
+                "usertitle": "Senior marketing expert",
+                "avatar": {
+                    "small": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/small_file.png?X-Amz-Expires=600&X-Amz-Date=20170620T155626Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=084319bb77512ef6c0d00b41c2b513c201ceb285495f37471aa67aafbdc660ee",
+                    "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/thumb_file.png?X-Amz-Expires=600&X-Amz-Date=20170620T155626Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=2d60e533850e991c028fecc482317b8e42d8df1866e019e4c73cea3d59c3070b",
+                    "large": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/large_file.png?X-Amz-Expires=600&X-Amz-Date=20170620T155626Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=6dce535da2e2a86e3b515ff75e06a7ce118ab6b68cc2bd47661de4715c00f774"
+                }
+            },
+            {
+                "id": 389347,
+                "topic_id": 102502,
+                "forum_name": "Music",
+                "description": "comment5",
+                "user_id": 10075,
+                "created_at": "2017-06-15T08:22:03.346Z",
+                "updated_at": "2017-06-15T08:22:03.346Z",
+                "state": "approved",
+                "video": null,
+                "image": null,
+                "media": null,
+                "username": "David ming",
+                "usertitle": "Senior marketing expert",
+                "avatar": {
+                    "small": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/small_file.png?X-Amz-Expires=600&X-Amz-Date=20170620T155626Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=084319bb77512ef6c0d00b41c2b513c201ceb285495f37471aa67aafbdc660ee",
+                    "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/thumb_file.png?X-Amz-Expires=600&X-Amz-Date=20170620T155626Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=2d60e533850e991c028fecc482317b8e42d8df1866e019e4c73cea3d59c3070b",
+                    "large": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/large_file.png?X-Amz-Expires=600&X-Amz-Date=20170620T155626Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=6dce535da2e2a86e3b515ff75e06a7ce118ab6b68cc2bd47661de4715c00f774"
+                }
+            }
+        ]
+    }
+}
+
+43) Board Group
+Url :- https://staging-czardom.herokuapp.com/api/v1/board_group?authentication_token=iUraA6uzCh8s6qThj31H
+Method :- Post
+Header :- Accept: application/json, 
+Content-Type: application/json
+Data :- 
+  {
+    "board":
+  {
+      "group_id": 16,
+      "start":0,
+      "limit":2
+  }
+}
+Output :-
+{
+    "success": true,
+    "info": "Board topics",
+    "data": {
+        "board_topics": [
+            {
+                "id": 102502,
+                "forum_id": 17,
+                "user_id": 10075,
+                "subject": "music group post testing",
+                "views_count": 4,
+                "created_at": "2017-06-15T06:26:32.776Z",
+                "updated_at": "2017-06-15T08:19:29.591Z",
+                "username": "David ming",
+                "usertitle": "Senior marketing expert",
+                "avatar": {
+                    "small": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/small_file.png?X-Amz-Expires=600&X-Amz-Date=20170620T154406Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=a5f190aed281878ac8e4a3e8ab923bf7306222851c4ae445a7551cc04a070640",
+                    "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/thumb_file.png?X-Amz-Expires=600&X-Amz-Date=20170620T154406Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=8b47073d41679db648f7a317219f731e80e1e3862c6c9cc18fdbafdd00a1e053",
+                    "large": "https://czardom.s3.amazonaws.com/uploads/user/image/10075/large_file.png?X-Amz-Expires=600&X-Amz-Date=20170620T154406Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=5f5247518ab4a04a1c9a9c098ae1c8086da7924ed73713f79bfce8d882a3ed77"
+                }
+            },
+            {
+                "id": 102390,
+                "forum_id": 17,
+                "user_id": 4893,
+                "subject": "Happy Friday, Music Czars! Please Enjoy My Uptown Magazine Article on the Amazingly Talented Leela James! Thank You....",
+                "views_count": 0,
+                "created_at": "2017-06-02T18:49:13.000Z",
+                "updated_at": "2017-06-02T18:56:10.132Z",
+                "username": "Daria Fennell",
+                "usertitle": null,
+                "avatar": {
+                    "small": "https://czardom.s3.amazonaws.com/uploads/user/image/4893/small_984287_10204461869481516_5230188130242892907_n.jpg?X-Amz-Expires=600&X-Amz-Date=20170620T154406Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=57c3904be515a9aa6b55242c513c337fbd11029dca0531e831041ac34e5c235e",
+                    "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/4893/thumb_984287_10204461869481516_5230188130242892907_n.jpg?X-Amz-Expires=600&X-Amz-Date=20170620T154406Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=fe2df5d29e2dd7a181325e61b67fbc59a5daffb127b03d4fda40c413b9c9e1f1",
+                    "large": "https://czardom.s3.amazonaws.com/uploads/user/image/4893/large_984287_10204461869481516_5230188130242892907_n.jpg?X-Amz-Expires=600&X-Amz-Date=20170620T154406Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170620/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c7d511165a27cbf7c7787e9f239595a90b6f93492fad78e8d0bdbe94567274c9"
+                }
+            }
+        ]
+    }
+}
+
+
+51) get group users
+url : https://staging-czardom.herokuapp.com/api/v1/groups/16?authentication_token=pT2q44Zgr-1NdLui1p-G
+method : get
+o/p : 
+{
+    "success": true,
+    "info": "Groups users",
+    "data": {
+        "users": [
+            {
+                "id": 3,
+                "full_name": "John DeMarchi",
+                "image": {
+                    "small": "https://czardom.s3.amazonaws.com/uploads/user/image/3/small_johndemarchi.jpeg?X-Amz-Expires=600&X-Amz-Date=20170615T134747Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170615/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=43b069299a36d93b83be86de5f2dd6f00b0323a32a95c8ff607f391fc8feda48",
+                    "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/3/thumb_johndemarchi.jpeg?X-Amz-Expires=600&X-Amz-Date=20170615T134747Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170615/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=a72d00c3e71f10e13e38b29854568c2603fced4f0517b8dec8e13244934912f2",
+                    "large": "https://czardom.s3.amazonaws.com/uploads/user/image/3/large_johndemarchi.jpeg?X-Amz-Expires=600&X-Amz-Date=20170615T134747Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170615/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=18d8dfc26153e5c50b1cddd6330a061a653fab339d3776feaca256370377f74b"
+                },
+                "education": "Harvard",
+                "work": "CEO, SocialCzars.com | COO, Czardom",
+                "website": "http://socialczars.com",
+                "about": "CEO of SocialCzars.com, a digital and social media agency fo world-class clients; COO, Czardom; Buffalo Bills fan.  Married to Jennifer DeMarchi, founder and CEO of Czardom. Nice to meet you!  Personal email : johnjdemarchijr@gmail.com",
+                "street": "5 island view way #60",
+                "street2": "",
+                "city": "Sea Bright",
+                "state": "NJ",
+                "zip_code": "07760",
+                "country": "US",
+                "followed": true
+            },
+            {
+                "id": 3500,
+                "full_name": "Robert Zimmerman",
+                "image": {
+                    "small": "https://czardom.s3.amazonaws.com/uploads/user/image/3500/small_1471265_10153282244208275_3549261744252725872_n.jpg?X-Amz-Expires=600&X-Amz-Date=20170615T134747Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170615/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=9f516d9dbad032a99c669537206364c20b1c4d0249079ac2f1a46676362379c8",
+                    "thumb": "https://czardom.s3.amazonaws.com/uploads/user/image/3500/thumb_1471265_10153282244208275_3549261744252725872_n.jpg?X-Amz-Expires=600&X-Amz-Date=20170615T134747Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170615/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=c067b36272b8cbfad4715318fb47c578e57cba792c3515a8afebd536ac42a98f",
+                    "large": "https://czardom.s3.amazonaws.com/uploads/user/image/3500/large_1471265_10153282244208275_3549261744252725872_n.jpg?X-Amz-Expires=600&X-Amz-Date=20170615T134747Z&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWISJTAVE4VUKJMQ/20170615/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=host&X-Amz-Signature=6dfe943c072323bd509cb837ad77a8ef7be177429bdb9a2d794fb4dff460e831"
+                },
+                "education": "University of Pennsylvania",
+                "work": "Zimmerman Strategic Company",
+                "website": "www.zimstrategies.com",
+                "about": "Partner of Czardom.com",
+                "street": "235 East 57th Street",
+                "street2": "#6F",
+                "city": "New York",
+                "state": "New York",
+                "zip_code": "10022",
+                "country": "US",
+                "followed": true
+            }
+         ]
+     }
+}

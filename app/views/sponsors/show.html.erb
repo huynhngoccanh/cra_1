@@ -1,0 +1,9 @@
+<div class='col-md-9'>
+  <h1><%= @sponsor_logo.name %></h1>
+  <div class="col-md-12">
+    <p><%= @sponsor_logo.content.html_safe if @sponsor_logo.content %></p>
+  </div>
+  <div class="col-md-12">
+  	<%= link_to "Special Offers", @sponsor_logo.path, class: 'btn btn-primary' %>
+  </div>
+</div>

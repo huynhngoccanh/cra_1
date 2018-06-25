@@ -1,0 +1,21 @@
+body {
+  padding-top: 51px;
+  font-family: 'Muli';
+}
+
+.panel-search-left {
+  padding: 40px;
+}
+
+.posts-list .item:first-child{
+  display: none;
+}
+
+.top-posts .item{
+  background: none;
+  border: none;
+}
+
+.top-posts .like-me{
+  margin-left: 0;
+}

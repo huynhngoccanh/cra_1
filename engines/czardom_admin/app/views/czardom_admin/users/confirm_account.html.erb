@@ -1,0 +1,115 @@
+<%= javascript_include_tag "https://js.stripe.com/v1/" %>
+<div class="profile-page">
+  <div class='col-md-9'>
+    
+    <form action="/admin/payment" method="post" id="payment_form">
+      
+      
+      <div class="col-xs-10 well">
+        <div class="col-md-8" style="margin-left:130px;">
+            <div class="payment-errors">
+            </div>
+            <br/><br/>
+
+             <div class="form-row">
+                <br/>
+                <div class="field">
+                  <strong>Card Number</strong>
+                  <input name='card_no' type="text" data-stripe="number"  class="form-control credit-number" placeholder="please enter valid card number" />
+                </div>
+                <br/>
+                <div class="field">
+                  <strong>CVC</strong>
+                  <input name='cvv' type="text"  data-stripe="cvc" class="form-control credit-scurity" placeholder="cvc number" id="cvc_number" />
+                </div>
+                <br/>
+                <div class="form-section-date">
+                    <label class="subscript-label">Expiration Date</label>
+                      <select  name='month' class="subscript-selectarc card-expiry-month" data-stripe="exp-month">
+                                        <option value="01">January</option>
+                                          <option value="02">February</option>
+                                          <option value="03">March</option>
+                                          <option value="04">April</option>
+                                          <option value="05">May</option>
+                                          <option value="06">June</option>
+                                          <option value="07">July</option>
+                                          <option value="08">August</option>
+                                          <option value="09">September</option>
+                                          <option value="10">October</option>
+                                          <option value="11">November</option>
+                                          <option value="12">December</option>
+                      </select>
+                      <select  class="card-expiry-year" name='year'class="subscript-selectarc" data-stripe="exp-year">
+                        <option value="2015">2015</option>
+                          <option value="2016">2016</option>
+                          <option value="2017">2017</option>
+                          <option value="2018">2018</option>
+                          <option value="2019">2019</option>
+                          <option value="2020">2020</option>
+                          <option value="2021">2021</option>
+                          <option value="2022">2022</option>
+                          <option value="2023">2023</option>
+                          <option value="2023">2024</option>
+                          <option value="2023">2025</option>
+                          <option value="2023">2026</option>
+                          <option value="2023">2027</option>
+                          <option value="2023">2028</option>
+                      </select>
+                  </div>
+              </div>
+          <br/><br/>
+          <div class="actions">
+            <%# button_title = @job.new_record? ? "Post Job Now" : "Update Job"%>
+            <%#= submit_tag "Pay", class: "btn btn-primary" %>
+            <button type="submit" class="submit btn btn-primary">Submit Payment</button>
+          </div>
+        </div>
+      </div>
+    <%# end %>
+  </form>
+  </div>
+</div>
+
+
+ 
+
+
+<script type="text/javascript">
+  Stripe.setPublishableKey("pk_test_qeIDRXKyOPzy3UGSMLDXinQI");
+  function stripeResponseHandler(status, response) {
+    var $form = $('#payment_form');
+    Stripe.setPublishableKey("pk_test_qeIDRXKyOPzy3UGSMLDXinQI");
+    if (response.error) {
+        // $(".payment-errors").text(response.error.message);
+        $form.find('.payment-errors').text(response.error.message).css('color', '#F02525');
+          val = document.getElementById("cvc_number").value;
+          if (val.length != 3)
+          {
+            $form.find('.payment-errors').text("Please enter 3 digit cvc number").css('color', '#F02525'); 
+          }
+          $form.find('button').prop('disabled', false);
+    } 
+    else {
+        var form$ = $("#payment_form");
+        var token = response['id'];
+        form$.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+        form$.get(0).submit();
+    }
+  }
+   
+  $(document).ready(function() {
+    $("#payment_form").submit(function(event) {
+      $('.submit').attr("disabled", "disabled");
+   
+      Stripe.createToken({
+          number: $('.credit-number').val(),
+          cvc: $('.credit-security').val(),
+          exp_month: $('.card-expiry-month').val(),
+          exp_year: $('.card-expiry-year').val()
+      }, stripeResponseHandler);
+   
+      // prevent the form from submitting with the default action
+      return false;
+    });
+  });
+</script>

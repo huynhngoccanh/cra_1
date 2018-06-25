@@ -1,0 +1,201 @@
+<%= javascript_include_tag "https://js.stripe.com/v1/" %>
+<% button_label = params[:action] == "new" ? "Create Job" : "Edit Job" %>
+<div class="profile-page">
+  <div class='col-md-9'>
+    <%= semantic_form_for(@job, :html => {:id=>"payment_form", multipart: true} ) do |f| %>
+      <% if @job.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+          <ul>
+          <% @job.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="payment-errors">
+      </div>
+      <div class="col-xs-10 well">
+        <div class="col-md-8" style="margin-left:130px;">
+          <div class="field">
+            <strong>Title</strong>
+            <%= f.text_field :title, :placeholder => "Title", :class => "form-control" %>
+          </div>
+          <br/>
+          <div class="field">
+            <strong>Describe Your Project</strong>
+            <%= f.text_area :description, rows: "5", :placeholder => "Describe your project here...", :class => "form-control" %>
+          </div>
+          <br/>
+          <div class="field">
+            <strong>What Skills Are Required</strong>
+            <%= f.text_area :summery_of_experience, rows: "5", :placeholder => "What skills are required?", :class => "form-control" %>
+          </div>
+          <br/>
+          <div class="field">
+            <strong>Contact Info</strong>
+            <%= f.text_field :contact_email, :placeholder => "Contact email", :class => "form-control" %>
+          </div>
+          <br/>
+          <div class="field">
+            <%= f.input :image, label: 'Upload Avatar' %>
+          </div>
+          <% if @job.new_record? %>
+            <br/><br/>
+            <div class="field">
+              <strong>Select A Plan</strong>
+              <%#= f.select :plan_id, options_for_select(@plans.collect{|p| ["$#{p.amount/100}/#{p.name}", p.id]}), :placeholder => "Select a Plan", :class => "form-control" %>
+              <%= select_tag :job_plan_id, options_for_select(@plans.collect{|p| [p.name, p.id]}), :placeholder => "Select a Plan" %>
+            </div>
+
+
+
+             <div class="form-row">
+                <br/>
+                <div class="field">
+                  <strong>Card Number</strong>
+                  <input type="text" data-stripe="number"  class="form-control" placeholder="please enter valid card number" />
+                </div>
+                <br/>
+                <div class="field">
+                  <strong>CVC</strong>
+                  <input type="text"  data-stripe="cvc" class="form-control" placeholder="cvc number" id="cvc_number" />
+                </div>
+                <br/>
+                <div class="field">
+                  <strong>Expiration Date</strong>
+                    <select  class="subscript-selectarc" data-stripe="exp-month">
+                      <option value="01">January</option>
+                      <option value="02">February</option>
+                      <option value="03">March</option>
+                      <option value="04">April</option>
+                      <option value="05">May</option>
+                      <option value="06">June</option>
+                      <option value="07">July</option>
+                      <option value="08">August</option>
+                      <option value="09">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                    </select>
+                    <select  class="subscript-selectarc" data-stripe="exp-year">
+                      <option value="2017">2017</option>
+                      <option value="2018">2018</option>
+                      <option value="2019">2019</option>
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2022">2022</option>
+                      <option value="2023">2023</option>
+                      <option value="2023">2024</option>
+                      <option value="2023">2025</option>
+                      <option value="2023">2026</option>
+                      <option value="2023">2027</option>
+                      <option value="2023">2028</option>
+                    </select>
+                </div>
+              </div>
+          <% end %>
+          <br/><br/>
+          <div class="actions">
+            <% button_title = @job.new_record? ? "Post Job Now" : "Update Job"%>
+            <%= f.submit "#{button_title}", class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+    // This identifies your website in the createToken call below
+    if ($('#payment_form').attr("action") == "/jobs")
+    {
+      Stripe.setPublishableKey("<%=ENV['STRIPE_PUBLISHABLE_KEY']%>");
+
+      var stripeResponseHandler = function(status, response) {
+        var $form = $('#payment_form');
+        if (response.error) {
+          // Show the errors on the form
+          $form.find('.payment-errors').text(response.error.message).css('color', '#F02525');
+          val = document.getElementById("cvc_number").value;
+          if (val.length != 3)
+          {
+            $form.find('.payment-errors').text("Please enter 3 digit cvc number").css('color', '#F02525');
+          }
+          $form.find('button').prop('disabled', false);
+        } else {
+          // token contains id, last4, and card type
+          var token = response.id;
+          // Insert the token into the form so it gets submitted to the server
+          $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+          // and re-submit
+          $form.get(0).submit();
+        }
+      };
+    }
+
+    jQuery(function($) {
+
+
+        $('#payment_form').validate({
+          rules:{
+            'job[title]': {
+                  required: true,
+                  minlength: 5
+                  },
+            'job[description]': {
+                  required: true,
+                  minlength: 5,
+                  maxlength: 1000
+                  },
+            'job[summery_of_experience]': {
+                  required: true,
+                  minlength:9,
+                  maxlength: 500
+                  },
+            'job[contact_email]': {
+                  required: true,
+                  email: true
+            }
+          },
+
+          messages: {
+            'job[title]': {
+                    required: "Please enter a title",
+                    minlength: "Your title name must consist of at least 5 characters"
+                    },
+            'job[description]': {
+                    required: "Please enter the job description",
+                    minlength: "Your job description must consist of at least 5 characters",
+                    maxlength: "Your job description upto 1000 characters"
+                    },
+            'job[summery_of_experience]': {
+                    required: "Please enter a job summary",
+                    minlength: "Your job summary must consist of at least 5 characters",
+                    maxlength: "Your job summary upto 500 characters"
+                    },
+            'job[contact_email]': "Please enter a valid email address"
+          }
+        });
+
+      $('#payment_form').submit(function(e) {
+        var $form = $(this);
+
+        // Disable the submit button to prevent repeated clicks
+        $form.find('submit').prop('disabled', true);
+
+        Stripe.card.createToken($form, stripeResponseHandler);
+
+        // Prevent the form from submitting with the default action
+        return false;
+      });
+
+
+    });
+
+
+</script>

@@ -1,0 +1,21 @@
+<%= semantic_form_for @job do |f| %>
+  <% if f.object.errors.any? %>
+    <p>There were errors that prevented your jobs from being submitted.</p>
+    <%= f.semantic_errors %>
+  <% end %>
+  <%= f.inputs do %>
+    <%= f.input :title %>
+    <%= f.input :description, input_html: { rows: 4 } %>
+    <%#= f.input :user_id, as: :select, :collection => User.all, include_blank: false %>
+    <%= f.input :summery_of_experience, input_html: { rows: 4 } %>
+    <%= f.input :contact_email %>
+    <%= f.input :image %>
+    <%= f.input :job_end_on, :as => :date%>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, button_html: { class: 'btn btn-primary' } %>
+    <%= link_to 'Cancel', :back, button_html: { class: 'btn btn-link' } %>
+  <% end %>
+
+<% end %>

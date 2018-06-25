@@ -1,0 +1,59 @@
+<div class="czar-filter-container">
+  <div class="row">
+    <div  class="filter-panel czar-panel"  >
+      <div class="panel-search-left">
+     
+          <%= form_tag('/update_group_user_list', method: :get, class: "form-inline", role: "form", remote: true, id: 'group_user_form') do -%>
+            <p style="color:  #A9A9A9;"><strong>Filter Czars</strong></p>
+            <div class="form-group">
+              <p><strong>Czar's Name</strong></p>
+              <%= text_field_tag 'search', params[:search], placeholder: "Search Czars", id: 'group_user_search' %>
+              <%= hidden_field_tag :group_id, @group.id %>
+            </div><!-- form group [search] -->
+            <br>
+            <div class="form-group">
+              <p><strong>City</strong></p>
+              <%= text_field_tag 'city', params[:city], placeholder: "Enter City", id: 'group_user_city' %>
+            </div>
+            <br>
+            <div class="form-group">
+              <p><strong>Client Name</strong></p>
+              <%= text_field_tag 'client_name', params[:client_name], placeholder: "Enter Client Name", id: 'group_user_client_name' %>
+            </div>
+            <br>
+            <div class="form-group">
+              <p><strong>Agency Name</strong></p>
+              <%= text_field_tag 'agency_name', params[:agency_name], placeholder: "Enter Agency(company) Name", id: 'group_user_agency_name' %>
+            </div>
+            <div class="form-group">
+              <p><strong>Speciality List</strong></p>
+              <% UserSegment.all.each do |segment| %>
+                <%= check_box_tag "segments[]", segment.id, false, :class => 'group_user_speciality'  -%><%= " #{segment.name}" %>
+                <br>
+              <% end %>
+            </div>
+            <button type="submit" class="btn btn-primary">Search Now</button>
+          <% end %>
+       
+      </div>
+    </div>       
+  </div>
+</div>
+
+<script type="text/javascript">
+//   $('#generate-add-form').hide();
+//   $("#group_user_search,#group_user_city,#group_user_client_name,#group_user_agency_name").keypress(function(){
+//     $('#generate-add-form').show();
+//     $('#group_user_form').submit();
+//   })
+//   $(".group_user_speciality").click(function(){
+//     if($(".group_user_speciality").is(':checked') == true){
+//       $('#generate-add-form').show();
+//       $('#group_user_form').submit();
+//     }
+//     if($(".group_user_speciality").is(':checked') == false){
+//       $('#generate-add-form').show();
+//       $('#group_user_form').submit();
+//     }
+//   })
+// </script>

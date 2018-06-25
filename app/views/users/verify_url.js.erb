@@ -1,0 +1,5 @@
+<% if @video.available? %>
+	$('#valid_msg').html("Valid URL").delay(5000).fadeOut('slow');
+<% else %>
+	$('#invalid_msg').html("Invalid URL. Video not found").delay(5000).fadeOut('slow');
+<% end %>

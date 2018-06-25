@@ -1,0 +1,28 @@
+<div class="row" id='my-invoices'>
+  <div class="col-md-3"></div>
+  <div class="col-md-8">
+    <div>
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#invoices" aria-controls="invoices" role="tab" data-toggle="tab">Invoices</a>
+        </li>
+        <li role="presentation">
+          <a href="#cards" aria-controls="cards" role="tab" data-toggle="tab">Payment methods</a>
+        </li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="invoices">
+          <%= render 'invoices' %>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="cards">
+          <%= render 'cards' %>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<% title "Jobs" %>
+
+<div class="profile-page">
+  <%= render "shared/flash_messages" %>
+
+  <h2 class="page-header">Job</h2>
+
+  <div class='col-md-9'>
+	  <h1><%= 'No Job found' if @job.blank? %></h1>
+	  <%  if current_user == @job.user %>
+		  <strong>
+	      <%= link_to 'Edit', edit_job_path(@job) %> | 
+	      <%= link_to 'Destroy', job_path(@job), method: :delete, data: { confirm: 'Are you sure?' } %>
+	    </strong>
+	  <% end %>
+    <br/><br/>
+    <div class="discussion-list">
+      <ul class="parent list-unstyled">
+        <h1><%= 'No Job found' if @job.blank? %></h1>
+        <li data-id="<%= @job.id %>">
+				  <div class="discussion-summary">
+				    <div class="col-xs-3 col-xs-offset-3 col-sm-2 col-sm-offset-0 col-md-2 author">
+				      <%= avatar_tag @job, size: :small %>
+				    </div>
+				    <div class='col-xs-8 col-sm-6 col-md-10 main' >
+				      <h3 class="title" style="font-size:26px;color:#0087e0;"><%= @job.title %></h3>
+				      <ul class="info list-unstyled">
+				        <li class="item-tags">
+				          <span class="badge badge-default"><strong><%= "#{@job.user.first_name} #{@job.user.last_name} "%></strong>posted
+				          <%= time_ago_in_words @job.created_at %> ago</span>
+				        </li>
+				        <li class="item-meta">
+				          <p style="font-size:22px" align="left" ><%= @job.description %></p>
+				          <%= @job.summery_of_experience %>
+				        </li>
+				      </ul>
+				    </div>
+				  </div>
+				</li>
+      </ul>
+    </div>
+  </div>
+</div>

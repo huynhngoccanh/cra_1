@@ -1,0 +1,433 @@
+<% title @user.full_name %>
+
+<% cover_photo(@user.cover_photo_url) %>
+
+<div class="profile-page col-md-9">
+  <%= render "shared/flash_messages" %>
+
+  <% if current_user == @user && !current_user.charter_member? %>
+    <p>
+      <%= link_to complete_path, class: 'donate-banner clearfix' do %>
+        <i class="fa fa-star"></i>
+        <span class="text">Donate Now To Become A Charter Czardom Member!</span>
+        <span class="button">Learn More! <i class="fa fa-chevron-right"></i></span>
+      <% end %>
+    </p>
+  <% end %>
+
+  <div class="profile-bio row">
+    <div class="col-md-2">
+      <div class="row">
+        <%= avatar_tag @user, size: :large, class: "col-sm-12 col-xs-6" %>
+        <div class="col-sm-12 col-xs-6">
+          <%= render partial: "shared/followable", locals: {user: @user} %>
+          <%= render partial: "shared/send_message", locals: {user: @user} %>
+        </div>
+      </div>
+    </div>
+
+    <div class="bio-main col-md-10">
+      <h2 class="profile-heading">
+        <%= @user.full_name %>
+        <% if @user.online? %>
+          <span class="text-success is-online">is online</span>
+        <% end %>
+
+        <span class='crows' data-toggle="tooltip" data-original-title="Czardom “Reputation” is increased via participation on this site and platform. The more you post, like, comment, reply, share, create events and so forth… the more your rep in our community will grow. Thanks!">
+          <b><%= number_with_precision(@user.total_point * 10, precision: 0) %></b> REPUTATION
+          <%= raw generate_crown(@user) %>
+        </span>
+
+        <% if can? :edit, @user %>
+          <%= link_to "Edit Profile", edit_user_path(edit_id(@user)), class: 'btn btn-default pull-right' %>
+        <% end %>
+
+        <% if @user.charter_member? %>
+          <br />
+          <span class="badge badge-success"><i class="fa fa-star"></i> Charter Czar</span>
+        <% end %>
+      </h2>
+
+      <div class="bio-overview">
+        <%= @user.website_link %>
+        <%= @user.location %>
+        <%= @user.work %>
+        <%= @user.phone %>
+        <%= @user.education %>
+        <%= @user.resume %>
+        <%#= @user.company_name %>
+        <%= @user.title %>
+      </div>
+
+      <div class="bio"><%= as_formatted_html(@user.about).html_safe %></div>
+
+      <h4 class="profile-heading sr-only">Social Networks</h4>
+      <div class="social-networks">
+        <%= @user.facebook_link %>
+        <%#= @user.vine_link %>
+        <%= @user.twitter_link %>
+        <%= @user.instagram_link %>
+        <%= @user.linked_in_link %>
+        <%= @user.google_plus_link %>
+        <%= @user.pinterest_link %>
+        <%= @user.youtube_link %>
+        <%= @user.tumblr_link %>
+        <%= @user.snapchat_link %>
+        <%= @user.whatsapp_link %>
+
+      </div>
+      <%#= button_to "Recommend", { action: "recommend" }, class: 'btn btn-default recommend-button'  %>
+
+      <% unless current_user == @user  %>
+        <p>
+          <a class="btn-large" data-toggle="collapse" href="#collapseRecommend" aria-expanded="false" aria-controls="collapseRecommend" style="text-decoration: none;">
+            Recommend Here
+          </a>
+        <p>
+
+
+        <div class="collapse" id="collapseRecommend">
+        <div class="card card-block">
+
+           <%= form_for @new_comment do |f| %>
+              <%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
+              <%= f.hidden_field :commentable_type, value: @new_comment.commentable_type %>
+              <div class="field form-group">
+                <%= f.text_area :body, class: 'form-control' %>
+              </div>
+              <div class="field form-group">
+                <%= submit_tag "Recommend", class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+            </div>
+            </div>
+
+      <% end %>
+
+    </div>
+    <div class="follower-info">
+      <div class="number"><%= format_number_follower(@user) %></div>
+      <div class="text">connections</div>
+    </div>
+  </div>
+
+  <% if @event_images.present? %>
+    <h3 class="profile-heading">
+      Images <%= link_to "Add New Image", new_profile_image_path, class: 'btn btn-default pull-right', "data-toggle" => "modal", :remote => true, "data-target" => "#AddImage" if @user == current_user%>
+    </h3>
+         <div class="row"  style="text-align: center;">
+        <% @event_images.each do |event_image| %>
+          <div class="col-xs-6 col-md-2">
+            <a class="group1" href="<%= event_image.image.url(:large)%>" >
+              <%= avatar_tag event_image, size: :small, id: "event_image#{event_image.id}", :class => "event_img"%>
+            </a>
+            <p>
+              <%= link_to "Edit", profile_image_path(event_image.id), "data-toggle" => "modal", :remote => true, "data-target" => "#EditEventImageModal", :class => "edit_link"%> |
+              <%= link_to 'delete', profile_image_path(event_image.id), method: :delete, data: {confirm: "Are you sure?"}%>
+            </p>
+          </div>
+          <div class="modal fade" id="EditEventImageModal" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Update Image</h4>
+                </div>
+                <div class="modal-body">
+                  <%= form_for event_image, url: profile_image_path(event_image), method: :put do |f| %>
+                    <div class="form-group" align="center" >
+                      <%= avatar_tag event_image, size: :large, :style => 'margin: 5px 5px 0px 5px;width:200px;height:200px;', id: "event_image#{event_image.id}"%>
+                      <p align="text-center"><strong>Please choose to update image</strong></p>
+                    </div>
+                    <div class="form-group" >
+                      <%= f.file_field :image , as: :file %>
+                    </div>
+                    <div class="modal-footer">
+                      <%= f.submit 'Submit', :class=>"btn btn-primary" %>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        </div>
+  <!--<%# elsif @user == current_user %>-->
+  <!--  <h3 class="profile-heading">-->
+  <!--    <%#= link_to "Add New Image", new_profile_image_path, class: 'btn btn-default pull-right', "data-toggle" => "modal", :remote => true, "data-target" => "#AddImage" %>-->
+  <!--  </h3>-->
+  <% end %>
+
+  <% if @event_videos.present? %>
+    <div>
+      <h3 class="profile-heading">
+        Videos <%= link_to "Add New Video", new_profile_video_path, class: 'btn btn-default pull-right', "data-toggle" => "modal", :remote => true, "data-target" => "#AddVideo" if @user == current_user%>
+      </h3>
+    </div>
+
+      <div class="row" style="text-align: center;">
+      <% @event_videos.each do |event_video| %>
+        <div class="col-xs-6 col-md-2">
+          <a href="#" onclick="getVideoHtml('<%=event_video.uid%>')" >
+            <img src="https://img.youtube.com/vi/<%=event_video.uid%>/1.jpg">
+            <!-- <iframe width="230" height="200" src="https://www.youtube.com/embed/<%= event_video.uid %>"></iframe> -->
+          </a>
+          <p>
+          <%= link_to "Edit", profile_video_path(event_video.id), "data-toggle" => "modal", :remote => true, "data-target" => "#EditEventVideoModal"%> |
+          <%= link_to 'delete', profile_video_path(event_video.id), method: :delete, data: {confirm: "Are you sure?"}%>
+          </p>
+        </div>
+        <div class="modal fade" id="EditEventVideoModal" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Update Video</h4>
+              </div>
+              <div class="modal-body">
+                <%= form_for event_video, url: profile_video_path(event_video), method: :put do |f| %>
+                  <div class="form-group" align="center" >
+                    <iframe width="230" height="200" src="https://www.youtube.com/embed/<%= event_video.uid %>"></iframe>
+                    <p align="text-center"><strong>Please choose to update video</strong></p>
+                  </div>
+                  <div class="form-group" >
+                    <%= f.text_field :video, label: 'Video URL', required: true, class: "form-control" %>
+                  </div>
+                  <div class="modal-footer">
+                    <%= f.submit 'Submit', :class=>"btn btn-primary" %>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    <!--<%# if @user == current_user %>-->
+    <!--  <br/><br/><br>-->
+    <!--  <h3 class="profile-heading">-->
+    <!--    <%#= link_to "Add New Video", new_profile_video_path, class: 'btn btn-default pull-right', "data-toggle" => "modal", :remote => true, "data-target" => "#AddVideo" %>-->
+    <!--  </h3>-->
+    <!--<%# end %>-->
+  <% end %>
+  <!--<br/><br/>-->
+  <div>
+  <h3 class="profile-heading">
+    Clients
+
+    <% if can? :edit, @user %>
+      <%= link_to "Edit Clients", edit_user_clients_path(edit_id(@user)), class: 'btn btn-default pull-right' %>
+    <% end %>
+  </h3>
+  </div>
+  <% if @user.clients.empty? && can?(:edit, @user) %>
+    <div class="jumbotron add-clients">
+      <h2>List Your Clients</h2>
+      <p class="description">
+        Showcase your top clients for other czars to see. They will also be
+        listed in search results to help others find you.
+      </p>
+      <p>
+        <%= link_to "Add Your Clients", edit_user_clients_path(edit_id(@user)), class: 'btn btn-primary' %>
+      </p>
+    </div>
+  <% else %>
+    <div class="row">
+      <% @user.clients.each do |client| %>
+        <div class="col-md-4">
+          <div class="thumbnail user-client">
+            <%= image_tag(client.image_url(:thumb), alt: client.name) if client.image? %>
+
+            <div class="caption">
+              <h3><%= client.name %></h3>
+
+              <div class="user-client-description">
+                <%= simple_format client.bio %>
+              </div>
+
+              <p><%= link_to_website client.website %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <br>
+  <br>
+  <h3 class="profile-heading">Recommendations</h3>
+
+
+    <% @comments.each do |comment| %>
+    <div class="jumbotron">
+    <% user = User.find(comment.user_id) %>
+    <ul class="media-list">
+      <li class="media">
+        <a class="pull-left" href="#">
+          <!--<img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">-->
+          <%= image_tag("#{user.image}" ,  class: "media-object img-circle") %>
+        </a>
+        <div class="media-body" >
+          <div class="well well-lg" style="background-color: white;">
+              <h4 class="media-heading text-uppercase reviews"><%= user.first_name  %> </h4>
+              <p class="media-comment">
+                <%= comment.body %>
+              </p>
+              <h6 class="media-heading reviews"><%= time_tag( comment.created_at.to_date ) %> </h6>
+          </div>
+        </div>
+       </li>
+    </ul>
+  </div>
+  <% end %>
+
+
+
+
+  <h3 class="profile-heading">
+    Groups
+
+    <% if can? :edit, @user %>
+      <%= link_to "Edit Groups", edit_user_groups_path(edit_id(@user)), class: 'btn btn-default pull-right' %>
+    <% end %>
+  </h3>
+
+  <% if @user.groups.empty? && can?(:edit, @user) %>
+    <div class="jumbotron join-groups">
+      <h2>Join A Few Groups</h2>
+      <p class="description">
+        Be the first to know about new events, posts and czars talking things you care about.
+      </p>
+      <p>
+        <%= link_to "Browse and Join Groups", edit_user_groups_path(edit_id(@user)), class: 'btn btn-primary' %>
+      </p>
+    </div>
+  <% else %>
+    <div class="group-listing">
+      <% @user.groups.each do |group| %>
+        <%= link_to group_path(group), class: 'col-xs-6 col-md-4 group' do %>
+          <%= image_tag group.image_url(:small), class: 'group-image', alt: group.name %>
+          <%= group.name %><br />
+          <span class="text-muted"><%= pluralize group.users.count, 'member' %></span>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if false %>
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="profile-heading">
+          Followers
+        </h3>
+
+        <% @user.followers.map(&:user).each do |user| %>
+          <%= link_to image_tag(user.image_url(:tiny), alt: user.full_name, title: user.full_name, data: { toggle: 'tooltip', placement: 'top' }), user_path(user) %>
+        <% end %>
+      </div>
+
+      <div class="col-md-6">
+        <h3 class="profile-heading">
+          Following
+        </h3>
+
+        <% User.find(@user.following_user_ids).each do |user| %>
+          <%= link_to image_tag(user.image_url(:tiny), alt: user.full_name, title: user.full_name, data: { toggle: 'tooltip', placement: 'top' }), user_path(user) %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="modal fade" id="AddImage" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Image</h4>
+      </div>
+      <div class="modal-body">
+        <%= semantic_form_for current_user.profile_images.build  do |f| %>
+          <div class="form-group" >
+            <%= f.input :image, as: :file, :input_html => {:multiple => true} %>
+          </div>
+          <div class="modal-footer">
+            <%= f.submit 'Submit', :class=>"btn btn-primary" %>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="AddVideo" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Video</h4>
+      </div>
+      <div class="modal-body">
+        <%= semantic_form_for current_user.profile_videos.build  do |f| %>
+          <div class="form-group" >
+            <%= f.input :video, as: :string, placeholder: "Add Youtube Url" %>
+          </div>
+          <div class="modal-footer">
+            <%= f.submit 'Submit', :class=>"btn btn-primary" %>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<style type="text/css">
+  .wrapper{
+      width: 950px;
+      height: 230px;
+      /*overflow-x:scroll;     */
+      white-space: nowrap;
+  }
+
+  .slide{
+      background: #ccc;
+      height: 130px;
+      display: inline-block;
+      width: 150px;
+  }
+
+  .img_outer_div{
+    width:950px;
+    background-color:white;
+    height:200px;
+    /*overflow:auto;*/
+  }
+
+  .img_inner_div{
+    width: 2000px;
+    height: 90px;
+  }
+
+  .event_img {
+      opacity: 0.5;
+      filter: alpha(opacity=50); /* For IE8 and earlier */
+  }
+
+  .event_img:hover {
+      opacity: 1.0;
+      filter: alpha(opacity=100); /* For IE8 and earlier */
+  }
+</style>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    //Examples of how to assign the Colorbox event to elements
+    $(".group1").colorbox();
+  });
+
+  function getVideoHtml(uid){
+    $.colorbox({ href: 'https://www.youtube.com/embed/'+uid, width: '600px', height: '400px', iframe: true, fixed: true });
+    //$.colorbox({html:"<iframe width=230 height=200 src='https://www.youtube.com/embed/"+uid+"'></iframe>"});
+  }
+</script>

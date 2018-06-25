@@ -1,0 +1,53 @@
+<div id="group_user_listing">
+  <% if users.present? %>
+    <% users.each do |u| %>
+      <div class='col-md-12'>
+        <div class="row">
+          <div class="col-md-2">
+            <div>
+              <%= image_tag u.image.url, class: 'img-rounded img-responsive' %>
+            </div>
+            <%= render partial: "shared/followable", locals: {user: u} %>
+          </div>
+          
+          <div class="col-md-10">
+            <%= link_to main_app.user_url(u.slug) do %>
+              <p><strong><%= u.first_name + " " + u.last_name %></strong></p>
+            <% end %>
+            <p>
+              <strong>Education:</strong>
+              <%= u.education %>
+            </p>
+            
+            <p>
+              <strong>Work:</strong>
+              <%= u.work %>
+            </p>
+            
+            <p>
+              <strong>Website:</strong>
+              <%= u.website %>
+            </p>
+            
+            
+            <p>
+              <strong>About:</strong>
+              <%= u.about ? truncate(u.about.html_safe, length: 150) : '' %>
+            </p>
+          </div>
+        </div>
+        
+        <br>
+      </div>
+      
+    <% end %> <!-- End user info list -->
+
+    <div class="col-md-12 text-center">
+      <%= paginate users, param_name: :board_user_page  %>
+    </div>
+  <% else %>
+    <div class='col-md-12'>
+      <h1><strong>No users found</strong></h1>
+    </div>
+  <% end %>
+</div>

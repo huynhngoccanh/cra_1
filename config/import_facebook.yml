@@ -1,0 +1,86 @@
+# Get this token here: https://developers.facebook.com/tools/explorer
+# Select user_groups and read_stream as permission
+fb_token: EAANKwGnhkjcBADvVZC7Vu0CNRFSP8fPWTZBfmuRZAjBGbDYLXuG1k9NfK56iG7ZBJTM59P1qS6NQthwbx8d0XhfrZA8yDYZAJLCF6uUMMb2e8PL9vciPTSZBfYsODZBXJsmfNZBJl3lVit7pyIBjbhveXzZBoL304pzWNm5tnoZBWpZCVwZDZD
+
+# The group ID you want to export posts from. Need to be a member of this group.
+fb_base: 171303432941423
+fb_tech: 499368626835539
+fb_beauty: 251186835005614
+fb_mothers: 1388494381419316
+fb_miamiswim: 221577064718466
+fb_canne: 279454652222448
+fb_emmyczar: 285367158298820
+fb_sxsw: 587726011307233
+fb_momblog: 249930365208920
+fb_backtoschool: 1505681116313992
+fb_travelczars: 761112757310070
+
+fb_cause: 1537680913193009
+fb_hamptons: 639828552737824
+fb_fashion_week_ny: 708374002530016
+fb_mom_czloggers: 249930365208920
+fb_coachella: 676144795771005
+fb_oscars: 586904124696719
+fb_super_bowl: 254182401413632
+fb_sports: 486347944826583
+fb_music: 378084089025928
+fb_father: 1474145936138610
+fb_urban: 367607116766082
+fb_cannes: 279454652222448
+fb_tribeca_film: 678318892211206
+fb_sundance: 195434113991378
+fb_holiday_guide: 1420289654916175
+fb_wedding: 351591245028475
+fb_art_bassel: 779682522074371
+fb_south_beach_food: 630232310420896
+fb_nba_allstar: 1573810192863985
+#98 stylist deleted
+cz_philadelphia: 103
+
+cz_facebook: 28
+cz_tech: 71
+cz_beauty: 58
+cz_mothers: 65
+cz_miamiswim: 44
+cz_canne: 2
+cz_emmy: 66
+cz_sxsw: 8
+cz_blog: 32
+cz_backtoschool: 76
+cz_travel: 33
+
+cz_cause: 100
+cz_hamptons: 34
+cz_fashionweek_ny: 3
+cz_mom_czloggers: 73
+cz_coachella: 56
+cz_oscars: 10
+cz_super_bowl: 4
+cz_sports: 16
+cz_music: 17
+cz_father: 19
+cz_urban: 61
+cz_cannes: 2
+cz_tribeca_film: 89
+cz_sundance: 74
+cz_holiday_guide: 5
+cz_wedding: 102
+cz_art_bassel: 84
+cz_south_beach_food: 90
+cz_nba_allstar: 91
+#98 stylist deleted
+# cz_philadelphia: 103
+
+
+
+# The category for the topics, will be created if needed
+discourse_category_name: Category
+
+# User with admin privileges to create users and category
+discourse_admin: admin
+
+# If true then nothing will be written to the Discourse database
+test_mode: false
+
+# User real email addresses? If not, .fake will be added to the username
+real_email_addresses: true
